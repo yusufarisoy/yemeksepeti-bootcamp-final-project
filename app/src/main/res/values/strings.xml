@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">FoodOrder</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- OnBoarding -->
+    <string name="on_boarding_title_1">Anında Sipariş Ver</string>
+    <string name="on_boarding_title_2">İstediğin Gibi Hazırlansın</string>
+    <string name="on_boarding_title_3">Dakikalar İçinde Kapında!</string>
+    <string name="on_boarding_text_1">İstediğin her yerde istediğin anda yemeğini sipariş edebilirsin.</string>
+    <string name="on_boarding_text_2">Siparişlerinde yazacağın notlarınla her şey tam istediğin gibi.</string>
+    <string name="on_boarding_text_3">Favori lezzetlerin en kısa sürede sana gelsin.</string>
+    <!-- Hints -->
+    <string name="hint_email">Email</string>
+    <string name="hint_name">Ad</string>
+    <string name="hint_surname">Soyad</string>
+    <string name="hint_password">Şifre</string>
+    <string name="hint_phone_number">Telefon Numarası</string>
+    <string name="hint_register">Hesabınız yok mu?</string>
+    <!-- Buttons -->
+    <string name="btn_login">Giriş Yap</string>
+    <string name="btn_register">Kaydol</string>
+    <string name="btn_next">Devam</string>
+    <string name="btn_skip">Atla</string>
+    <string name="btn_finish">Bitir</string>
+    <string name="btn_cancel">Vazgeç</string>
+    <string name="btn_basket">Sepet</string>
+    <string name="checkbox_is_owner">Restoran Sahibiyim</string>
+    <!-- Labels -->
+    <string name="title_welcome">Hoşgeldin!</string>
+    <string name="label_popular">Popüler</string>
+    <string name="label_order_history">Geçmiş Siparişlerim</string>
+    <string name="label_addresses">Adreslerim</string>
+</resources>

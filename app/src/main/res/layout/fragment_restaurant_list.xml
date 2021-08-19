@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/space_8"
+    tools:context=".ui.user.restaurant_list.RestaurantListFragment">
+
+    <TextView
+        android:id="@+id/textViewAddressIcon"
+        android:background="@drawable/ic_home"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginVertical="@dimen/space_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewAddressTitle"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_8"
+        app:layout_constraintStart_toEndOf="@id/textViewAddressIcon"
+        app:layout_constraintTop_toTopOf="@id/textViewAddressIcon"/>
+
+    <TextView
+        android:id="@+id/textViewAddressDetail"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddressTitle"
+        app:layout_constraintStart_toEndOf="@id/textViewAddressIcon"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRestaurants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddressDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

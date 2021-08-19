@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/itemLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/recycler_item_address_border"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/textViewIcon"
+        android:background="@drawable/ic_home"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/space_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:layout_marginStart="@dimen/space_8"
+        app:layout_constraintStart_toEndOf="@id/textViewIcon"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewDetail"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_4"
+        android:layout_marginStart="@dimen/space_8"
+        app:layout_constraintStart_toEndOf="@id/textViewIcon"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
