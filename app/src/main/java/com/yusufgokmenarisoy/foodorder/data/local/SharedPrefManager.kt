@@ -10,7 +10,7 @@ class SharedPrefManager(context: Context) {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
 
-    fun getString(key: String): String? = sharedPreferences.getString(key, null)
+    fun getString(key: String): String? = sharedPreferences.getString(key, "")
 
     fun saveString(key: String, data: String) {
         sharedPreferences.edit().putString(key, data).apply()

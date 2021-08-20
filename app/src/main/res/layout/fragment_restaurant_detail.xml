@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.user.restaurant_detail.RestaurantDetailFragment">
+
+    <ImageView
+        android:id="@+id/imageViewBanner"
+        android:scaleType="fitXY"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:outlineProvider="background"
+        android:background="@drawable/image_view_banner_border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewImage"
+        android:elevation="@dimen/space_4"
+        app:shapeAppearanceOverlay="@style/CircularImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="@dimen/space_16"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black_800"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:layout_marginHorizontal="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/imageViewBanner"
+        app:layout_constraintStart_toEndOf="@id/imageViewImage"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewRate"
+        app:cardCornerRadius="12dp"
+        android:backgroundTint="@color/green_500"
+        android:layout_width="65dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/space_4"
+        app:layout_constraintStart_toStartOf="@id/textViewName"
+        app:layout_constraintTop_toBottomOf="@id/textViewName">
+
+        <TextView
+            android:id="@+id/textViewRate"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textViewRestaurantAddressLabel"
+        android:text="@string/label_address"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textViewRestaurantMinOrderFeeLabel"
+        app:layout_constraintTop_toBottomOf="@id/imageViewImage" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantAddress"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantAddressLabel"
+        app:layout_constraintStart_toStartOf="@id/textViewRestaurantAddressLabel"
+        app:layout_constraintEnd_toEndOf="@id/textViewRestaurantAddressLabel"/>
+
+    <TextView
+        android:id="@+id/textViewRestaurantMinOrderFeeLabel"
+        android:text="@string/label_min_order"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintEnd_toStartOf="@id/textViewRestaurantAvgDeliveryLabel"
+        app:layout_constraintStart_toEndOf="@id/textViewRestaurantAddressLabel"
+        app:layout_constraintTop_toBottomOf="@id/imageViewImage" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantMinOrderFee"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantMinOrderFeeLabel"
+        app:layout_constraintStart_toStartOf="@id/textViewRestaurantMinOrderFeeLabel"
+        app:layout_constraintEnd_toEndOf="@id/textViewRestaurantMinOrderFeeLabel"/>
+
+    <TextView
+        android:id="@+id/textViewRestaurantAvgDeliveryLabel"
+        android:text="@string/label_avg_delivery"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/textViewRestaurantMinOrderFeeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewImage" />
+
+    <TextView
+        android:id="@+id/textViewRestaurantAvgDelivery"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantAvgDeliveryLabel"
+        app:layout_constraintStart_toStartOf="@id/textViewRestaurantAvgDeliveryLabel"
+        app:layout_constraintEnd_toEndOf="@id/textViewRestaurantAvgDeliveryLabel"/>
+
+    <TextView
+        android:id="@+id/textViewLabelMenu"
+        android:text="@string/label_menu"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_64"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantAddress"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:paddingHorizontal="@dimen/space_4"
+        app:layout_constraintTop_toBottomOf="@id/textViewLabelMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/textViewLabelMenuWarning"
+        android:text="@string/label_menu_warning"
+        android:textAlignment="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/space_16"
+        android:layout_marginTop="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/textViewLabelMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/buttonBasket"
+        android:text="@string/btn_basket"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        app:iconTint="@color/white"
+        app:iconGravity="start"
+        app:icon="@drawable/ic_shopping_cart"
+        app:backgroundTint="@color/primary_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_32"
+        android:layout_marginEnd="@dimen/space_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintTop_toBottomOf="@id/textViewRestaurantMinOrderFeeLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

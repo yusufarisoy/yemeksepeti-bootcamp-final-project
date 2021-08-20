@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/itemLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginBottom="@dimen/space_16"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingVertical="@dimen/space_4"
+        android:paddingStart="@dimen/space_16"
+        android:paddingEnd="@dimen/space_4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewFoodName"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cardViewFoodImage" />
+
+        <TextView
+            android:id="@+id/textViewFoodIngredients"
+            android:textSize="13sp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/space_4"
+            android:layout_marginEnd="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@id/textViewFoodName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cardViewFoodImage" />
+
+        <TextView
+            android:id="@+id/textViewFoodPrice"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textViewFoodIngredients"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewFoodImage"
+            app:cardCornerRadius="@dimen/space_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <ImageView
+                android:id="@+id/imageViewFood"
+                android:scaleType="centerCrop"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

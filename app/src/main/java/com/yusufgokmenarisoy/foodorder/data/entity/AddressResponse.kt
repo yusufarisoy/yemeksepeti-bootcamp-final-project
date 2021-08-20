@@ -10,5 +10,5 @@ data class AddressResponse(
     val message: String,
 
     @SerializedName("data")
-    val addresses: List<Address>
+    val addresses: List<Address>?
 )

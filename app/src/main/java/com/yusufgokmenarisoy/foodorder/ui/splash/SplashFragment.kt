@@ -1,6 +1,8 @@
 package com.yusufgokmenarisoy.foodorder.ui.splash
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,39 +30,42 @@ class SplashFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setObservers()
-        viewModel.startApp()
+        startApp()
     }
 
-    private fun setObservers() {
-        viewModel.isFirstLaunch().observe(viewLifecycleOwner, {
-            if (it) {
+    private fun startApp() {
+        if (viewModel.isFirstLaunch()) {
+            Handler(Looper.getMainLooper()).postDelayed({
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToOnBoardingFragment())
                 viewModel.saveFirstLaunch()
-            } else {
-                authorize()
-            }
-        })
+            }, 500)
+        } else {
+            authorize()
+        }
     }
 
     private fun authorize() {
         val token = viewModel.getToken()
-        if (token != null) {
+        if (token != null && token != "") {
             viewModel.authorizeToken(token).observe(viewLifecycleOwner, {
-                when (it.status) {
-                    Resource.Status.LOADING -> {
-
+                if (it.status == Resource.Status.SUCCESS) {
+                    if (it.data!!.success) {
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment(it.data.user!!, token))
+                    } else {
+                        Log.v("SplashFragment", "${it.data}")
+                        viewModel.removeToken()
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
                     }
-                    Resource.Status.SUCCESS -> {
-                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment(it.data!!.user, token))
-                    }
-                    Resource.Status.ERROR -> {
-                        Log.v("Splash", "${it.message}")
-                    }
+                } else if(it.status == Resource.Status.ERROR) {
+                    Log.v("SplashFragment", "${it.data}")
+                    viewModel.removeToken()
+                    findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
                 }
             })
         } else {
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            Handler(Looper.getMainLooper()).postDelayed({
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            }, 500)
         }
     }
 }

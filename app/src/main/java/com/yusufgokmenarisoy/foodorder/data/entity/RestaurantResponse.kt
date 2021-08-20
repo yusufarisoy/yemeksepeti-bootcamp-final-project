@@ -2,7 +2,7 @@ package com.yusufgokmenarisoy.foodorder.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class ProfileResponse(
+data class RestaurantResponse(
     @SerializedName("success")
     val success: Boolean,
 
@@ -10,5 +10,5 @@ data class ProfileResponse(
     val message: String,
 
     @SerializedName("data")
-    val user: User
+    val restaurants: List<Restaurant>?
 )

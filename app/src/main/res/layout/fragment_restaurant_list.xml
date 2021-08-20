@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/space_8"
+    android:padding="@dimen/space_16"
     tools:context=".ui.user.restaurant_list.RestaurantListFragment">
 
     <TextView
@@ -37,11 +37,32 @@
         app:layout_constraintTop_toBottomOf="@id/textViewAddressTitle"
         app:layout_constraintStart_toEndOf="@id/textViewAddressIcon"/>
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/textViewLabelRestaurantWarning"
+        android:text="@string/label_restaurant_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddressDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRestaurants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_32"
+        android:layout_marginTop="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddressDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_64"
         app:layout_constraintTop_toBottomOf="@id/textViewAddressDetail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

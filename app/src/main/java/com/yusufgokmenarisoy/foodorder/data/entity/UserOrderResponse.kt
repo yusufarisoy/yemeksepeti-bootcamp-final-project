@@ -10,5 +10,5 @@ data class UserOrderResponse(
     val message: String,
 
     @SerializedName("data")
-    val orders: List<UserOrder>
+    val orders: List<UserOrder>?
 )

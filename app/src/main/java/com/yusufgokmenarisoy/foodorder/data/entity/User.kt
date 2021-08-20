@@ -13,7 +13,7 @@ data class User(
     val role: String,
 
     @SerializedName("city_id")
-    val cityId: Int,
+    val cityId: Int?,
 
     @SerializedName("email")
     var email: String,

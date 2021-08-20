@@ -70,6 +70,12 @@
         <action
             android:id="@+id/action_homeFragment_to_restaurantListFragment"
             app:destination="@id/restaurantListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantListFragment"
@@ -79,5 +85,38 @@
         <argument
             android:name="address"
             app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Address" />
+        <action
+            android:id="@+id/action_restaurantListFragment_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantDetailFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.restaurant_detail.RestaurantDetailFragment"
+        android:label="fragment_restaurant_detail"
+        tools:layout="@layout/fragment_restaurant_detail" >
+        <argument
+            android:name="restaurant"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Restaurant" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodDetailFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.food_detail.FoodDetailFragment"
+        android:label="fragment_food_detail"
+        tools:layout="@layout/fragment_food_detail" >
+        <argument
+            android:name="food"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Food" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.User" />
     </fragment>
 </navigation>

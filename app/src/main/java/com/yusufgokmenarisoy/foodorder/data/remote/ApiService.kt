@@ -25,11 +25,14 @@ interface ApiService {
     //Restaurants
 
     @GET("restaurants")
-    suspend fun getRestaurantsByDistrict(@Query("d.id") districtId: Int): Response<RestaurantsResponse>
+    suspend fun getRestaurantsByDistrict(@Query("d.id") districtId: Int): Response<RestaurantResponse>
 
     @GET("restaurants")
-    suspend fun getRestaurantsByCity(@Query("c.id") cityId: Int): Response<RestaurantsResponse>
+    suspend fun getRestaurantsByCity(@Query("c.id") cityId: Int): Response<RestaurantResponse>
 
     @GET("restaurants/most-populars/{city_id}")
-    suspend fun getMostPopularRestaurants(@Path("city_id") cityId: Int): Response<RestaurantsResponse>
+    suspend fun getMostPopularRestaurants(@Path("city_id") cityId: Int): Response<RestaurantResponse>
+
+    @GET("restaurants/{id}/foods")
+    suspend fun getRestaurantMenu(@Path("id") restaurantId: Int): Response<FoodResponse>
 }

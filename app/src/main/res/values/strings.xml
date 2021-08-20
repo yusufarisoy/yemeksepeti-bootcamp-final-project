@@ -29,4 +29,15 @@
     <string name="label_popular">Popüler</string>
     <string name="label_order_history">Geçmiş Siparişlerim</string>
     <string name="label_addresses">Adreslerim</string>
+    <string name="label_address_warning">Kayıtlı adresiniz bulunamadı, sipariş vermek için hemen bir tane ekle!</string>
+    <string name="label_order_history_warning">Hiç eski siparişini bulamadık.</string>
+    <string name="label_restaurant_warning">Şehrinde kayıtlı restoran bulamadık!</string>
+    <string name="label_min_order">Min. Sipariş</string>
+    <string name="label_address">Adres</string>
+    <string name="label_avg_delivery">Teslimat</string>
+    <string name="label_menu">Menü</string>
+    <string name="label_menu_warning">Görünüşe göre restoranın menüsü eksik. Lütfen restoranın ayarlamalarını tamamladığınga tekrar gel.</string>
+    <string name="btn_add_to_basket">Sepete Ekle</string>
+    <string name="btn_logout">Çıkış Yap</string>
+    <string name="value_1">1</string>
 </resources>

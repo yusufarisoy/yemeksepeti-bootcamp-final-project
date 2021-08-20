@@ -30,6 +30,8 @@ class ApiRepository @Inject constructor(
 
     fun getMostPopularRestaurants(cityId: Int) = performNetworkOperation { remoteDataSource.getMostPopularRestaurants(cityId) }
 
+    fun getRestaurantMenu(restaurantId: Int) = performNetworkOperation { remoteDataSource.getRestaurantMenu(restaurantId) }
+
 
 
     //Local

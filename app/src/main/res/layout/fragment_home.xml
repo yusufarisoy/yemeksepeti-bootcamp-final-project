@@ -20,7 +20,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_16"
+                app:layout_constraintVertical_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/textViewTitleWelcome"
                 app:layout_constraintTop_toTopOf="@id/imageButtonProfile"/>
 
             <TextView
@@ -33,14 +35,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_16"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewWelcomeUser"/>
+                app:layout_constraintTop_toBottomOf="@id/textViewWelcomeUser"
+                app:layout_constraintBottom_toBottomOf="@id/imageButtonProfile"/>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageButtonProfile"
-                android:elevation="5dp"
+                android:elevation="@dimen/space_4"
                 app:shapeAppearanceOverlay="@style/CircularImageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="@dimen/space_32"
                 android:layout_marginEnd="@dimen/space_16"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +66,7 @@
                 android:id="@+id/recyclerViewPopularRestaurants"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/space_16"
+                android:paddingHorizontal="@dimen/space_16"
                 app:layout_constraintTop_toBottomOf="@id/textViewLabelPopular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -78,6 +81,20 @@
                 android:layout_marginStart="@dimen/space_16"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recyclerViewPopularRestaurants"/>
+
+            <TextView
+                android:id="@+id/textViewLabelAddressWarning"
+                android:visibility="gone"
+                android:text="@string/label_address_warning"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:paddingHorizontal="@dimen/space_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewLabelAddresses"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewAddresses"
@@ -99,6 +116,20 @@
                 android:layout_marginStart="@dimen/space_16"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recyclerViewAddresses"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/textViewLabelOrderHistoryWarning"
+                android:text="@string/label_order_history_warning"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:paddingHorizontal="@dimen/space_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewLabelOrderHistory"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewOrderHistory"
@@ -127,6 +158,15 @@
         android:layout_marginBottom="@dimen/space_32"
         android:layout_marginEnd="@dimen/space_16"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
