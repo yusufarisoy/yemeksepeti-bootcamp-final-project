@@ -26,6 +26,7 @@ class CartFragment : BaseFragment() {
     private val viewModel: CartViewModel by viewModels()
     private lateinit var binding: FragmentCartBinding
     private lateinit var adapter: CartItemAdapter
+    private var cart: List<CartItem>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,6 +87,7 @@ class CartFragment : BaseFragment() {
         }
         viewModel.cart.observe(viewLifecycleOwner, {
             if (it.isNotEmpty()) {
+                cart = it
                 adapter.setData(ArrayList(it))
                 var totalPrice = 0
                 it.forEach { item ->
@@ -116,7 +118,7 @@ class CartFragment : BaseFragment() {
             showDialog()
         }
         binding.buttonConfirmCart.setOnClickListener {
-            //TODO
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToOrderConfirmFragment(restaurant.id, cart!!.toTypedArray()))
         }
     }
 

@@ -112,10 +112,10 @@ class FoodDetailViewModel @Inject constructor(
 
     fun clearCartAndAddItem() {
         viewModelScope.launch {
-            cartItemCount = 0
             apiRepository.clear()
-            cartRestaurantId = -1
-            addToCart()
         }
+        cartItemCount = 0
+        cartRestaurantId = -1
+        addToCart()
     }
 }

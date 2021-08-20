@@ -38,4 +38,14 @@ interface ApiService {
 
     @GET("restaurants/{id}/foods")
     suspend fun getRestaurantMenu(@Path("id") restaurantId: Int): Response<FoodResponse>
+
+
+
+    //Orders
+
+    @POST("orders/new")
+    suspend fun createOrder(@Header("Authorization") token: String, @Body orderBody: CreateOrderBody): Response<CreateOrderResponse>
+
+    @POST("orders/{id}/foods/add")
+    suspend fun addFoodsOfOrder(@Header("Authorization") token: String, @Path("id") orderId: Int, @Body addOrderFoodBody: AddOrderFoodBody): Response<SuccessResponse>
 }

@@ -1,9 +1,12 @@
 package com.yusufgokmenarisoy.foodorder.data.entity
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "cart")
 data class CartItem(
     @PrimaryKey
@@ -27,4 +30,4 @@ data class CartItem(
 
     @ColumnInfo(name = "removed_ingredients")
     val removedIngredients: String
-)
+) : Parcelable

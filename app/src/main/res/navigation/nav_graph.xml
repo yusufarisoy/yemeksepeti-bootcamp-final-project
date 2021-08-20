@@ -139,5 +139,20 @@
         <action
             android:id="@+id/action_cartFragment_to_foodDetailFragment"
             app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_orderConfirmFragment"
+            app:destination="@id/orderConfirmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderConfirmFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.order_confirm.OrderConfirmFragment"
+        android:label="OrderConfirmFragment"
+        tools:layout="@layout/fragment_order_confirm" >
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
+        <argument
+            android:name="cart"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.CartItem[]" />
     </fragment>
 </navigation>

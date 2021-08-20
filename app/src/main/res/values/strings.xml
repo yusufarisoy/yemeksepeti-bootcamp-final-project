@@ -49,4 +49,10 @@
     <string name="title_basket">Sepetim</string>
     <string name="label_total">Toplam</string>
     <string name="label_clear_cart_warning">Sepeti boşaltmak istediğinize emin misiniz?</string>
+    <string name="title_confirm_cart">Sepeti Onayla</string>
+    <string name="label_delivery_address">Teslimat Adresi</string>
+    <string name="label_payment_type">Ödeme Yöntemi</string>
+    <string name="btn_cash">Nakit</string>
+    <string name="label_order_note">Sipariş Notu</string>
+    <string name="btn_confirm_order">Sipariş Ver</string>
 </resources>

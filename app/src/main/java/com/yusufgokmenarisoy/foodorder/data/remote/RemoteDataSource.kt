@@ -1,5 +1,7 @@
 package com.yusufgokmenarisoy.foodorder.data.remote
 
+import com.yusufgokmenarisoy.foodorder.data.entity.AddOrderFoodBody
+import com.yusufgokmenarisoy.foodorder.data.entity.CreateOrderBody
 import com.yusufgokmenarisoy.foodorder.data.entity.LoginBody
 import com.yusufgokmenarisoy.foodorder.data.entity.RegisterBody
 import javax.inject.Inject
@@ -27,4 +29,10 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
     suspend fun getMostPopularRestaurants(cityId: Int) = getResult { apiService.getMostPopularRestaurants(cityId) }
 
     suspend fun getRestaurantMenu(restaurantId: Int) = getResult { apiService.getRestaurantMenu(restaurantId) }
+
+    //Orders
+
+    suspend fun createOrder(token: String, orderBody: CreateOrderBody) = getResult { apiService.createOrder("Bearer $token", orderBody) }
+
+    suspend fun addFoodsOfOrder(token: String, orderId: Int, addOrderFoodBody: AddOrderFoodBody) = getResult { apiService.addFoodsOfOrder("Bearer $token", orderId, addOrderFoodBody) }
 }

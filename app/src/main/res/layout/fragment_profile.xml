@@ -9,9 +9,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLogout"
-        app:icon="@drawable/ic_power"
-        app:iconSize="20dp"
-        app:iconGravity="textStart"
         android:text="@string/btn_logout"
         android:textAllCaps="false"
         app:cornerRadius="@dimen/space_16"

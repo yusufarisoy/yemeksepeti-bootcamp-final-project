@@ -1,7 +1,7 @@
 package com.yusufgokmenarisoy.foodorder.data.remote
 
 import com.google.gson.Gson
-import com.yusufgokmenarisoy.foodorder.data.entity.ErrorResponse
+import com.yusufgokmenarisoy.foodorder.data.entity.SuccessResponse
 import retrofit2.Response
 import java.lang.Exception
 
@@ -16,7 +16,7 @@ abstract class BaseDataSource {
                     return Resource.success(body)
                 }
             }
-            val errorBody = Gson().fromJson(response.errorBody()?.charStream(), ErrorResponse::class.java)
+            val errorBody = Gson().fromJson(response.errorBody()?.charStream(), SuccessResponse::class.java)
             return error(errorBody.message)
         } catch (ex: Exception) {
             return error("Error: ${ex.localizedMessage}")

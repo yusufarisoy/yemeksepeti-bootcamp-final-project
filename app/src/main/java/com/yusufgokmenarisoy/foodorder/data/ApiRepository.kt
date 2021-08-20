@@ -1,9 +1,7 @@
 package com.yusufgokmenarisoy.foodorder.data
 
 import androidx.lifecycle.LiveData
-import com.yusufgokmenarisoy.foodorder.data.entity.CartItem
-import com.yusufgokmenarisoy.foodorder.data.entity.LoginBody
-import com.yusufgokmenarisoy.foodorder.data.entity.RegisterBody
+import com.yusufgokmenarisoy.foodorder.data.entity.*
 import com.yusufgokmenarisoy.foodorder.data.local.LocalDataSource
 import com.yusufgokmenarisoy.foodorder.data.remote.RemoteDataSource
 import com.yusufgokmenarisoy.foodorder.data.remote.performNetworkOperation
@@ -35,6 +33,12 @@ class ApiRepository @Inject constructor(
     fun getMostPopularRestaurants(cityId: Int) = performNetworkOperation { remoteDataSource.getMostPopularRestaurants(cityId) }
 
     fun getRestaurantMenu(restaurantId: Int) = performNetworkOperation { remoteDataSource.getRestaurantMenu(restaurantId) }
+
+    //Orders
+
+    fun createOrder(token: String, orderBody: CreateOrderBody) = performNetworkOperation { remoteDataSource.createOrder(token, orderBody) }
+
+    fun addFoodsOfOrder(token: String, orderId: Int, addOrderFoodBody: AddOrderFoodBody) = performNetworkOperation { remoteDataSource.addFoodsOfOrder(token, orderId, addOrderFoodBody) }
 
 
 
