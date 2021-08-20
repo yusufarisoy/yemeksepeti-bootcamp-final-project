@@ -57,6 +57,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/buttonCart"
+        android:text="@string/btn_basket"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        app:iconTint="@color/white"
+        app:iconGravity="start"
+        app:icon="@drawable/ic_shopping_cart"
+        app:backgroundTint="@color/primary_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_48"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <ProgressBar
         android:visibility="gone"
         android:id="@+id/progressBar"

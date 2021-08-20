@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="@dimen/space_16"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.user.cart.CartFragment">
+
+    <ImageButton
+        android:id="@+id/buttonBack"
+        android:src="@drawable/ic_arrow_back"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="@dimen/space_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:text="@string/title_basket"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageButton
+        android:visibility="gone"
+        android:id="@+id/buttonClearCart"
+        android:src="@drawable/ic_trash"
+        app:tint="@color/gray_700"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/space_16"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
+        android:id="@+id/layoutRestaurantDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        android:paddingHorizontal="@dimen/space_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonBack">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewRestaurant"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewRestaurantName"
+            android:textColor="@color/black_800"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16"
+            app:layout_constraintTop_toTopOf="@id/cardViewImage"
+            app:layout_constraintStart_toEndOf="@id/cardViewImage"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewRestaurantRate"
+            app:cardCornerRadius="12dp"
+            android:backgroundTint="@color/green_500"
+            android:layout_width="55dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/space_16"
+            app:layout_constraintStart_toEndOf="@id/cardViewImage"
+            app:layout_constraintTop_toBottomOf="@id/textViewRestaurantName"
+            app:layout_constraintBottom_toBottomOf="@id/cardViewImage">
+
+            <TextView
+                android:id="@+id/textViewRate"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewRestaurantAvgDeliveryTimeIcon"
+            android:background="@drawable/ic_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16"
+            app:layout_constraintStart_toEndOf="@id/cardViewRestaurantRate"
+            app:layout_constraintTop_toBottomOf="@id/textViewRestaurantName"
+            app:layout_constraintBottom_toBottomOf="@id/cardViewImage"/>
+
+        <TextView
+            android:id="@+id/textViewRestaurantAvgDeliveryTimeText"
+            android:textColor="@color/black_800"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_4"
+            app:layout_constraintTop_toBottomOf="@id/textViewRestaurantName"
+            app:layout_constraintBottom_toBottomOf="@id/cardViewImage"
+            app:layout_constraintStart_toEndOf="@id/textViewRestaurantAvgDeliveryTimeIcon"/>
+
+        <TextView
+            android:id="@+id/textViewOpenRestaurantIcon"
+            android:background="@drawable/ic_arrow_right"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cardViewImage"
+            app:layout_constraintBottom_toBottomOf="@id/cardViewImage"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/space_4"
+            android:background="@color/gray_600"
+            app:layout_constraintTop_toBottomOf="@id/cardViewImage"
+            app:layout_constraintStart_toStartOf="@id/cardViewImage"
+            app:layout_constraintEnd_toEndOf="@id/textViewOpenRestaurantIcon"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/layoutEmptyCartWarning"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/space_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:src="@drawable/shopping_bag"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+        <TextView
+            android:text="@string/label_empty_cart_warning"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/gray_800"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/recyclerViewCart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:paddingHorizontal="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/layoutRestaurantDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/layoutTotalPrice"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toTopOf="@id/buttonConfirmCart"
+        app:layout_constraintBottom_toBottomOf="@id/buttonConfirmCart"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textViewLabelTotalPrice"
+            android:text="@string/label_total"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textViewTotalPrice"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:visibility="gone"
+        android:id="@+id/buttonConfirmCart"
+        android:text="@string/btn_continue"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/space_8"
+        app:backgroundTint="@color/primary_red"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_16"
+        android:layout_marginBottom="@dimen/space_48"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/layoutTotalPrice"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_64"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

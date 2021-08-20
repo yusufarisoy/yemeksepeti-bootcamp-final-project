@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
     private val user: User = args.get<User>("user")!!
     private val token: String = args.get<String>("token")!!
 
-    lateinit var restaurants: LiveData<Resource<RestaurantResponse>>
+    lateinit var restaurants: LiveData<Resource<RestaurantListResponse>>
     lateinit var addresses: LiveData<Resource<AddressResponse>>
     lateinit var orders: LiveData<Resource<UserOrderResponse>>
 

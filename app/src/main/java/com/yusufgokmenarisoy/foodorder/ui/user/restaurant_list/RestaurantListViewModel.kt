@@ -5,7 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.yusufgokmenarisoy.foodorder.data.ApiRepository
 import com.yusufgokmenarisoy.foodorder.data.entity.Address
-import com.yusufgokmenarisoy.foodorder.data.entity.RestaurantResponse
+import com.yusufgokmenarisoy.foodorder.data.entity.RestaurantListResponse
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class RestaurantListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val address = args.get<Address>("address")!!
-    lateinit var restaurants: LiveData<Resource<RestaurantResponse>>
+    lateinit var restaurants: LiveData<Resource<RestaurantListResponse>>
 
     init {
         getRestaurants()

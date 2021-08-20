@@ -12,9 +12,12 @@
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/drawable/onboarding_viewpager_indicator_active.xml" value="0.3828125" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/drawable/onboarding_viewpager_indicator_inactive.xml" value="0.3828125" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/drawable/rating_view_border.xml" value="0.3828125" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/drawable/rectangle_radius.xml" value="0.3828125" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/drawable/recycler_item_address_border.xml" value="0.3828125" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/drawable/recycler_item_order_history_home_border.xml" value="0.3828125" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/custom_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_food_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
@@ -22,12 +25,14 @@
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_on_boarding3.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_order_confirm.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_restaurant_detail.xml" value="0.33" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_restaurant_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_address.xml" value="0.33" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_cart.xml" value="0.33" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_food.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_order_history_home.xml" value="0.33" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_popular_restaurant.xml" value="0.36666666666666664" />

@@ -24,6 +24,11 @@
     <string name="btn_cancel">Vazgeç</string>
     <string name="btn_basket">Sepet</string>
     <string name="checkbox_is_owner">Restoran Sahibiyim</string>
+    <string name="btn_add_to_basket">Sepete Ekle</string>
+    <string name="btn_yes">Evet</string>
+    <string name="btn_no">Hayır</string>
+    <string name="btn_continue">Devam</string>
+    <string name="btn_logout">Çıkış Yap</string>
     <!-- Labels -->
     <string name="title_welcome">Hoşgeldin!</string>
     <string name="label_popular">Popüler</string>
@@ -36,8 +41,12 @@
     <string name="label_address">Adres</string>
     <string name="label_avg_delivery">Teslimat</string>
     <string name="label_menu">Menü</string>
+    <string name="label_empty_cart_warning">Sepetiniz boş, yüzlerce restoran menüsü arasından istediğin yemeği seçip afiyetle yiyebilirsin.</string>
     <string name="label_menu_warning">Görünüşe göre restoranın menüsü eksik. Lütfen restoranın ayarlamalarını tamamladığınga tekrar gel.</string>
-    <string name="btn_add_to_basket">Sepete Ekle</string>
-    <string name="btn_logout">Çıkış Yap</string>
+    <string name="label_remove_item_from_cart">Ürünü sepetinizden çıkarmak istediğinize emin misiniz?</string>
+    <string name="label_clear_cart_and_add">Sepetinizde farklı bir restorandan ürün mevcut. Sepetinizi boşaltıp bu restoranın ürününü eklemek ister misiniz?</string>
     <string name="value_1">1</string>
+    <string name="title_basket">Sepetim</string>
+    <string name="label_total">Toplam</string>
+    <string name="label_clear_cart_warning">Sepeti boşaltmak istediğinize emin misiniz?</string>
 </resources>

@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 
 const val TOKEN = "com.yusufgokmenarisoy.foodorder.TOKEN"
 const val FIRST_LAUNCH = "com.yusufgokmenarisoy.foodorder.FIRST_LAUNCH"
+const val CART_RESTAURANT = "com.yusufgokmenarisoy.foodorder.CART_RESTAURANT"
 
 class SharedPrefManager(context: Context) {
 

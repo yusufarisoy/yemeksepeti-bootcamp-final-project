@@ -1,7 +1,10 @@
 package com.yusufgokmenarisoy.foodorder.di
 
 import android.content.Context
+import androidx.room.Room
+import com.yusufgokmenarisoy.foodorder.data.local.CartDao
 import com.yusufgokmenarisoy.foodorder.data.local.LocalDataSource
+import com.yusufgokmenarisoy.foodorder.data.local.LocalDatabase
 import com.yusufgokmenarisoy.foodorder.data.local.SharedPrefManager
 import dagger.Module
 import dagger.Provides
@@ -14,8 +17,19 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 class LocalModule {
 
     @Provides
+    fun provideCartDao(localDatabase: LocalDatabase): CartDao = localDatabase.cartDao()
+
+    @Provides
+    fun provideLocalDataSource(sharedPrefManager: SharedPrefManager, cartDao: CartDao): LocalDataSource =
+        LocalDataSource(sharedPrefManager, cartDao)
+
+    @Provides
     fun provideSharedPrefManager(@ApplicationContext context: Context): SharedPrefManager = SharedPrefManager(context)
 
     @Provides
-    fun provideLocalDataSource(sharedPrefManager: SharedPrefManager): LocalDataSource = LocalDataSource(sharedPrefManager)
+    fun provideDatabase(@ApplicationContext context: Context): LocalDatabase {
+        return Room
+            .databaseBuilder(context, LocalDatabase::class.java, "LocalDatabase")
+            .build()
+    }
 }

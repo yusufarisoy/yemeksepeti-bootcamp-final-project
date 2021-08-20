@@ -100,6 +100,9 @@ class HomeFragment : BaseFragment() {
         binding.imageButtonProfile.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment(viewModel.getUser()))
         }
+        binding.buttonCart.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCartFragment())
+        }
     }
 
     private fun setObservers() {

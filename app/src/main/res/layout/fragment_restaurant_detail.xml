@@ -7,16 +7,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.user.restaurant_detail.RestaurantDetailFragment">
 
-    <ImageView
-        android:id="@+id/imageViewBanner"
-        android:scaleType="fitXY"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewBannerImage"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:outlineProvider="background"
-        android:background="@drawable/image_view_banner_border"
+        android:layout_height="150dp"
+        app:cardCornerRadius="@dimen/space_8"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_marginHorizontal="@dimen/space_16"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewBanner"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:outlineProvider="background"/>
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageViewImage"
@@ -24,8 +32,8 @@
         app:shapeAppearanceOverlay="@style/CircularImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginTop="116dp"
+        android:layout_marginStart="@dimen/space_32"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -36,9 +44,8 @@
         android:textColor="@color/black_800"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_4"
         android:layout_marginHorizontal="@dimen/space_16"
-        app:layout_constraintTop_toBottomOf="@id/imageViewBanner"
+        app:layout_constraintTop_toBottomOf="@id/cardViewBannerImage"
         app:layout_constraintStart_toEndOf="@id/imageViewImage"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -170,7 +177,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/buttonBasket"
+        android:id="@+id/buttonCart"
         android:text="@string/btn_basket"
         android:textColor="@color/white"
         android:textAllCaps="false"
@@ -180,7 +187,7 @@
         app:backgroundTint="@color/primary_red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space_32"
+        android:layout_marginBottom="@dimen/space_64"
         android:layout_marginEnd="@dimen/space_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -194,4 +201,5 @@
         app:layout_constraintTop_toBottomOf="@id/textViewRestaurantMinOrderFeeLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

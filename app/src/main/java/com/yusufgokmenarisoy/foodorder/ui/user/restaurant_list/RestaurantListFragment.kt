@@ -36,6 +36,7 @@ class RestaurantListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
+        initOnClickListeners()
         fetchData()
     }
 
@@ -52,6 +53,12 @@ class RestaurantListFragment : BaseFragment() {
         binding.textViewAddressTitle.text = address.title
         val addressDetail = "${address.city}/${address.district}"
         binding.textViewAddressDetail.text = addressDetail
+    }
+
+    private fun initOnClickListeners() {
+        binding.buttonCart.setOnClickListener {
+            findNavController().navigate(RestaurantListFragmentDirections.actionRestaurantListFragmentToCartFragment())
+        }
     }
 
     private fun fetchData() {

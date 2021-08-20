@@ -76,6 +76,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantListFragment"
@@ -88,6 +91,9 @@
         <action
             android:id="@+id/action_restaurantListFragment_to_restaurantDetailFragment"
             app:destination="@id/restaurantDetailFragment" />
+        <action
+            android:id="@+id/action_restaurantListFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantDetailFragment"
@@ -100,6 +106,9 @@
         <action
             android:id="@+id/action_restaurantDetailFragment_to_foodDetailFragment"
             app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailFragment"
@@ -118,5 +127,17 @@
         <argument
             android:name="user"
             app:argType="com.yusufgokmenarisoy.foodorder.data.entity.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
     </fragment>
 </navigation>
