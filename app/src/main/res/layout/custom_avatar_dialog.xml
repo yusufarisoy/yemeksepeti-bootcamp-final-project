@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:paddingHorizontal="@dimen/space_16"
+        android:paddingTop="@dimen/space_32"
+        android:paddingBottom="@dimen/space_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar1"
+            android:src="@drawable/avatar_1"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar2"
+            android:src="@drawable/avatar_2"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@id/imageViewAvatar1"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar3"
+            android:src="@drawable/avatar_3"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@id/imageViewAvatar2"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar4"
+            android:src="@drawable/avatar_4"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@id/imageViewAvatar3"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar5"
+            android:src="@drawable/avatar_5"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@id/imageViewAvatar4"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar6"
+            android:src="@drawable/avatar_6"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@id/imageViewAvatar5"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar7"
+            android:src="@drawable/avatar_7"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@id/imageViewAvatar6"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewAvatar8"
+            android:src="@drawable/avatar_8"
+            app:shapeAppearanceOverlay="@style/CircularImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@id/imageViewAvatar7"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_below="@id/imageViewAvatar1">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_1"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="76dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_3"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="76dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_4"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="76dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_5"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="75dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_6"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="76dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_7"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="76dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/avatar_8"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginStart="76dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+    </RelativeLayout>
+</HorizontalScrollView>

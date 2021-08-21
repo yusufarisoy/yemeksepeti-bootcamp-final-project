@@ -21,6 +21,12 @@ interface ApiService {
     @GET("users/profile/orders")
     suspend fun getOrderHistoryOfUser(@Header("Authorization") token: String): Response<UserOrderResponse>
 
+    @PUT("users/profile/change-password")
+    suspend fun changePassword(@Header("Authorization") token: String, @Body() changePasswordBody: ChangePasswordBody): Response<SuccessResponse>
+
+    @PUT("users/profile/update")
+    suspend fun updateProfile(@Header("Authorization") token: String, @Body() updateProfileBody: UpdateProfileBody): Response<SuccessResponse>
+
 
     //Restaurants
 
@@ -42,6 +48,9 @@ interface ApiService {
 
 
     //Orders
+
+    @GET("payment-types")
+    suspend fun getPaymentTypes(): Response<PaymentTypeResponse>
 
     @POST("orders/new")
     suspend fun createOrder(@Header("Authorization") token: String, @Body orderBody: CreateOrderBody): Response<CreateOrderResponse>

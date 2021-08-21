@@ -41,14 +41,14 @@
         app:layout_constraintTop_toBottomOf="@id/buttonBack"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <RadioGroup
-        android:id="@+id/radioGroupAddresses"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAddresses"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_8"
-        android:layout_marginStart="@dimen/space_16"
+        android:paddingHorizontal="@dimen/space_16"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewLabelAddresses"/>
 
     <TextView
@@ -59,15 +59,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_16"
         android:layout_marginTop="@dimen/space_32"
-        app:layout_constraintTop_toBottomOf="@id/radioGroupAddresses"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewAddresses"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <RadioGroup
-        android:id="@+id/radioGroupPaymentTypes"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPaymentTypes"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_8"
-        android:layout_marginStart="@dimen/space_16"
+        android:paddingHorizontal="@dimen/space_16"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewLabelPaymentType"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -78,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_32"
         android:layout_marginStart="@dimen/space_16"
-        app:layout_constraintTop_toBottomOf="@id/radioGroupPaymentTypes"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewPaymentTypes"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout

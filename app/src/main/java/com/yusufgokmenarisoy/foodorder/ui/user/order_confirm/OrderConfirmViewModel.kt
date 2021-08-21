@@ -20,16 +20,22 @@ class OrderConfirmViewModel @Inject constructor(
 ) : ViewModel() {
 
     lateinit var addresses: LiveData<Resource<AddressResponse>>
+    lateinit var paymentTypes: LiveData<Resource<PaymentTypeResponse>>
     private val restaurantId = args.get<Int>("restaurantId")
     private val cart = args.get<Array<CartItem>>("cart")
     private val token = apiRepository.getString(TOKEN)
 
     init {
-        //getAddresses(token!!)
+        getAddresses(token!!)
+        getPaymentTypes()
     }
 
     private fun getAddresses(token: String) {
-        addresses = apiRepository.getAddressesOfUser(token)
+        this.addresses = apiRepository.getAddressesOfUser(token)
+    }
+
+    private fun getPaymentTypes() {
+        this.paymentTypes = apiRepository.getPaymentTypes()
     }
 
     fun createOrder(deliveryAddressId: Int, paymentTypeId: Int, note: String): LiveData<Resource<CreateOrderResponse>> =
@@ -38,7 +44,7 @@ class OrderConfirmViewModel @Inject constructor(
     fun addFoodsOfOrder(orderId: Int): LiveData<Resource<SuccessResponse>> {
         val body = mutableListOf<List<Any>>()
         for (i in cart!!.indices) {
-            body.add(i, listOf(1, cart[i].id, cart[i].quantity, cart[i].removedIngredients))
+            body.add(i, listOf(orderId, cart[i].id, cart[i].quantity, cart[i].removedIngredients))
         }
         return apiRepository.addFoodsOfOrder(token!!, orderId, AddOrderFoodBody(body))
     }

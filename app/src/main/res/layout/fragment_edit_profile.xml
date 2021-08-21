@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="@dimen/space_64"
+    tools:context=".ui.user.edit_profile.EditProfileFragment">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:text="@string/title_edit_profile"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        app:shapeAppearanceOverlay="@style/CircularImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmail"
+        android:hint="@string/hint_email"
+        app:boxStrokeColor="@color/gray_600"
+        app:hintTextColor="@color/gray_600"
+        app:errorTextAppearance="@style/customTextInputLayoutError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_marginHorizontal="@dimen/space_32"
+        app:boxCornerRadiusTopStart="@dimen/space_16"
+        app:boxCornerRadiusTopEnd="@dimen/space_16"
+        app:boxCornerRadiusBottomStart="@dimen/space_16"
+        app:boxCornerRadiusBottomEnd="@dimen/space_16"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextEmail"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutName"
+        android:hint="@string/hint_name"
+        app:boxStrokeColor="@color/gray_600"
+        app:hintTextColor="@color/gray_600"
+        app:errorTextAppearance="@style/customTextInputLayoutError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:layout_marginHorizontal="@dimen/space_32"
+        app:boxCornerRadiusTopStart="@dimen/space_16"
+        app:boxCornerRadiusTopEnd="@dimen/space_16"
+        app:boxCornerRadiusBottomStart="@dimen/space_16"
+        app:boxCornerRadiusBottomEnd="@dimen/space_16"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextName"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutSurname"
+        android:hint="@string/hint_surname"
+        app:boxStrokeColor="@color/gray_600"
+        app:hintTextColor="@color/gray_600"
+        app:errorTextAppearance="@style/customTextInputLayoutError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:layout_marginHorizontal="@dimen/space_32"
+        app:boxCornerRadiusTopStart="@dimen/space_16"
+        app:boxCornerRadiusTopEnd="@dimen/space_16"
+        app:boxCornerRadiusBottomStart="@dimen/space_16"
+        app:boxCornerRadiusBottomEnd="@dimen/space_16"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSurname"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPhoneNumber"
+        android:hint="@string/hint_phone_number"
+        app:boxStrokeColor="@color/gray_600"
+        app:hintTextColor="@color/gray_600"
+        app:errorTextAppearance="@style/customTextInputLayoutError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        android:layout_marginHorizontal="@dimen/space_32"
+        app:boxCornerRadiusTopStart="@dimen/space_16"
+        app:boxCornerRadiusTopEnd="@dimen/space_16"
+        app:boxCornerRadiusBottomStart="@dimen/space_16"
+        app:boxCornerRadiusBottomEnd="@dimen/space_16"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutSurname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPhoneNumber"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonCancel"
+        android:text="@string/btn_cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/space_32"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginStart="@dimen/space_32"
+        android:layout_marginEnd="@dimen/space_8"
+        android:backgroundTint="@color/gray_800"
+        app:layout_constraintEnd_toStartOf="@id/buttonSave"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPhoneNumber" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSave"
+        android:text="@string/btn_save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/space_32"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_blue"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_32"
+        android:layout_marginStart="@dimen/space_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonCancel"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPhoneNumber" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/buttonCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

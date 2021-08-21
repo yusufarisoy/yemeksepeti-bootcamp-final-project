@@ -1,9 +1,6 @@
 package com.yusufgokmenarisoy.foodorder.data.remote
 
-import com.yusufgokmenarisoy.foodorder.data.entity.AddOrderFoodBody
-import com.yusufgokmenarisoy.foodorder.data.entity.CreateOrderBody
-import com.yusufgokmenarisoy.foodorder.data.entity.LoginBody
-import com.yusufgokmenarisoy.foodorder.data.entity.RegisterBody
+import com.yusufgokmenarisoy.foodorder.data.entity.*
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) : BaseDataSource() {
@@ -18,6 +15,10 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
 
     suspend fun getOrderHistoryOfUser(token: String) = getResult { apiService.getOrderHistoryOfUser("Bearer $token") }
 
+    suspend fun changePassword(token: String, changePasswordBody: ChangePasswordBody) = getResult { apiService.changePassword("Bearer $token", changePasswordBody) }
+
+    suspend fun updateProfile(token: String, updateProfileBody: UpdateProfileBody) = getResult { apiService.updateProfile("Bearer $token", updateProfileBody) }
+
     //Restaurants
 
     suspend fun getRestaurantById(restaurantId: Int) = getResult { apiService.getRestaurantById(restaurantId) }
@@ -31,6 +32,8 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
     suspend fun getRestaurantMenu(restaurantId: Int) = getResult { apiService.getRestaurantMenu(restaurantId) }
 
     //Orders
+
+    suspend fun getPaymentTypes() = getResult { apiService.getPaymentTypes() }
 
     suspend fun createOrder(token: String, orderBody: CreateOrderBody) = getResult { apiService.createOrder("Bearer $token", orderBody) }
 

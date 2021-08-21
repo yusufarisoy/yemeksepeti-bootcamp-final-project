@@ -33,6 +33,7 @@ class HomeFragment : BaseFragment() {
     private lateinit var restaurantAdapter: PopularRestaurantAdapter
     private lateinit var addressAdapter: AddressAdapter
     private lateinit var orderHistoryAdapter: HomeOrderHistoryAdapter
+    private var addressArray = arrayOf<Address>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -98,7 +99,7 @@ class HomeFragment : BaseFragment() {
 
     private fun setOnClickListeners() {
         binding.imageButtonProfile.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment(viewModel.getUser()))
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment(viewModel.getUser(), addressArray))
         }
         binding.buttonCart.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCartFragment())
@@ -126,6 +127,7 @@ class HomeFragment : BaseFragment() {
                     it.data?.let { response ->
                         if (response.success) {
                             addressAdapter.setData(ArrayList(response.addresses!!))
+                            addressArray = response.addresses.toTypedArray()
                         } else {
                             binding.textViewLabelAddressWarning.show()
                         }

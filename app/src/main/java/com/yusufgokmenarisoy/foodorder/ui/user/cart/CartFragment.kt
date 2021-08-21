@@ -112,7 +112,7 @@ class CartFragment : BaseFragment() {
         val deliveryTime = "${restaurant.avgDeliveryTime} dk"
         binding.textViewRestaurantAvgDeliveryTimeText.text = deliveryTime
         binding.layoutRestaurantDetail.setOnClickListener {
-            findNavController().navigate(CartFragmentDirections.actionCartFragmentToRestaurantDetailFragment(restaurant))
+            findNavController().navigate(CartFragmentDirections.actionCartFragmentToRestaurantDetailFragment(restaurant, true))
         }
         binding.buttonClearCart.setOnClickListener {
             showDialog()

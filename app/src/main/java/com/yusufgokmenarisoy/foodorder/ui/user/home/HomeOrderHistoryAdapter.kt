@@ -37,6 +37,8 @@ class HomeOrderHistoryAdapter(private val listener: OrderOnClick) : RecyclerView
             Glide.with(binding.root).load(order.restaurantImage).into(binding.imageView)
             binding.textViewDate.text = order.date.slice(0..9)
             binding.textViewName.text = order.restaurant
+            val address = "${order.city}/${order.district}"
+            binding.textViewAddress.text = address
             val totalPrice = "${order.totalPrice} TL"
             binding.textViewTotalPrice.text = totalPrice
             binding.itemLayout.setOnClickListener {

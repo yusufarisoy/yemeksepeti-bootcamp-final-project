@@ -5,7 +5,9 @@
     android:id="@+id/itemLayout"
     app:cardCornerRadius="@dimen/space_16"
     android:elevation="2dp"
-    android:layout_width="160dp"
+    android:layout_marginTop="@dimen/space_16"
+    android:layout_marginHorizontal="@dimen/space_8"
+    android:layout_width="match_parent"
     android:layout_height="230dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/recycler_item_order_history_home_border"
@@ -46,6 +48,16 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
+            android:id="@+id/textViewAddress"
+            android:textSize="12sp"
+            android:textColor="@color/black_800"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewName"/>
+
+        <TextView
             android:id="@+id/textViewTotalPrice"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -54,7 +66,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewName"
+            app:layout_constraintTop_toBottomOf="@id/textViewAddress"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

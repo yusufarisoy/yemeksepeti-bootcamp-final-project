@@ -13,6 +13,9 @@
     <string name="hint_name">Ad</string>
     <string name="hint_surname">Soyad</string>
     <string name="hint_password">Şifre</string>
+    <string name="hint_current_password">Mevcut Şifre</string>
+    <string name="hint_new_password">Yeni Şifre</string>
+    <string name="hint_new_password_repeat">Yeni Şifre Tekrar</string>
     <string name="hint_phone_number">Telefon Numarası</string>
     <string name="hint_register">Hesabınız yok mu?</string>
     <!-- Buttons -->
@@ -27,13 +30,21 @@
     <string name="btn_add_to_basket">Sepete Ekle</string>
     <string name="btn_yes">Evet</string>
     <string name="btn_no">Hayır</string>
+    <string name="btn_save">Kaydet</string>
     <string name="btn_continue">Devam</string>
     <string name="btn_logout">Çıkış Yap</string>
+    <string name="btn_confirm_order">Sipariş Ver</string>
+    <string name="btn_faq">SSS</string>
+    <string name="btn_change_password">Şifre Değiştir</string>
+    <string name="btn_order_history">Geçmiş Siparişlerim</string>
+    <string name="btn_cash">Nakit</string>
+    <string name="btn_change">Değiştir</string>
     <!-- Labels -->
     <string name="title_welcome">Hoşgeldin!</string>
     <string name="label_popular">Popüler</string>
     <string name="label_order_history">Geçmiş Siparişlerim</string>
     <string name="label_addresses">Adreslerim</string>
+    <string name="label_address_warning_profile">Kayıtlı adresiniz bulunamadı.</string>
     <string name="label_address_warning">Kayıtlı adresiniz bulunamadı, sipariş vermek için hemen bir tane ekle!</string>
     <string name="label_order_history_warning">Hiç eski siparişini bulamadık.</string>
     <string name="label_restaurant_warning">Şehrinde kayıtlı restoran bulamadık!</string>
@@ -52,7 +63,7 @@
     <string name="title_confirm_cart">Sepeti Onayla</string>
     <string name="label_delivery_address">Teslimat Adresi</string>
     <string name="label_payment_type">Ödeme Yöntemi</string>
-    <string name="btn_cash">Nakit</string>
     <string name="label_order_note">Sipariş Notu</string>
-    <string name="btn_confirm_order">Sipariş Ver</string>
+    <string name="label_change_password">Şifre Değiştir</string>
+    <string name="title_edit_profile">Profili Düzenle</string>
 </resources>

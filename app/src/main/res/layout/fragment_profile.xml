@@ -1,24 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.user.profile.ProfileFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="@dimen/space_16"
+        android:paddingHorizontal="@dimen/space_16">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonLogout"
-        android:text="@string/btn_logout"
-        android:textAllCaps="false"
-        app:cornerRadius="@dimen/space_16"
-        app:backgroundTint="@color/primary_red"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space_16"
-        android:layout_marginHorizontal="@dimen/space_32"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewProfile"
+            app:cardCornerRadius="@dimen/space_8"
+            android:elevation="@dimen/space_8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:paddingBottom="@dimen/space_32"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:elevation="@dimen/space_4"
+                    android:layout_marginTop="@dimen/space_16"
+                    app:shapeAppearanceOverlay="@style/CircularImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/buttonEditProfile"
+                    android:src="@drawable/ic_edit"
+                    android:elevation="@dimen/space_4"
+                    android:background="@drawable/circle_button"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="@dimen/space_8"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageView"/>
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:text="John Doe"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black_800"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    app:layout_constraintTop_toBottomOf="@id/imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/textViewEmail"
+                    android:text="john@gmail.com"
+                    android:textColor="@color/black_800"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    app:layout_constraintTop_toBottomOf="@id/textViewName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewLabelAddresses"
+            android:text="@string/label_addresses"
+            android:textColor="@color/black_800"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttonAddAddress"
+            app:layout_constraintBottom_toBottomOf="@id/buttonAddAddress"/>
+
+        <TextView
+            android:id="@+id/textViewLabelAddressWarning"
+            android:visibility="gone"
+            android:text="@string/label_address_warning_profile"
+            android:textAlignment="center"
+            android:textSize="13sp"
+            android:paddingHorizontal="@dimen/space_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_marginStart="@dimen/space_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewLabelAddresses"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonAddAddress"
+            app:icon="@drawable/ic_add"
+            app:iconSize="20dp"
+            app:iconPadding="0dp"
+            app:iconGravity="textStart"
+            app:cornerRadius="@dimen/space_16"
+            app:backgroundTint="@color/green_500"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardViewProfile"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAddresses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:paddingHorizontal="@dimen/space_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonAddAddress"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonOrderHistory"
+            android:text="@string/btn_order_history"
+            android:textAllCaps="false"
+            android:textColor="@color/black_800"
+            app:cornerRadius="@dimen/space_16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_48"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginHorizontal="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewAddresses"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSSS"
+            android:text="@string/btn_faq"
+            android:textColor="@color/black_800"
+            app:cornerRadius="@dimen/space_16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginHorizontal="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@id/buttonOrderHistory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonChangePassword"
+            android:text="@string/btn_change_password"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_red"
+            app:cornerRadius="@dimen/space_16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginHorizontal="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@id/buttonSSS"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLogout"
+            android:text="@string/btn_logout"
+            android:textAllCaps="false"
+            app:cornerRadius="@dimen/space_16"
+            app:backgroundTint="@color/primary_red"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginHorizontal="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@id/buttonChangePassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardViewProfile"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

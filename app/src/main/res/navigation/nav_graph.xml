@@ -109,6 +109,10 @@
         <action
             android:id="@+id/action_restaurantDetailFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <argument
+            android:name="visitFromCart"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/foodDetailFragment"
@@ -127,6 +131,15 @@
         <argument
             android:name="user"
             app:argType="com.yusufgokmenarisoy.foodorder.data.entity.User" />
+        <argument
+            android:name="addresses"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Address[]" />
+        <action
+            android:id="@+id/action_profileFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -154,5 +167,27 @@
         <argument
             android:name="cart"
             app:argType="com.yusufgokmenarisoy.foodorder.data.entity.CartItem[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.edit_profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.User" />
+        <argument
+            android:name="token"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.address.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" >
+        <argument
+            android:name="address"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Address"
+            app:nullable="true" />
     </fragment>
 </navigation>

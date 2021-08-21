@@ -36,7 +36,7 @@ class RestaurantDetailFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-        setOnClickListener()
+        setOnClickListeners()
         fetchData()
     }
 
@@ -60,9 +60,14 @@ class RestaurantDetailFragment : BaseFragment() {
         })
         binding.recyclerViewMenu.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewMenu.adapter = adapter
+
+        val visitFromCart = RestaurantDetailFragmentArgs.fromBundle(requireArguments()).visitFromCart
+        if (visitFromCart) {
+            binding.buttonCart.hide()
+        }
     }
 
-    private fun setOnClickListener() {
+    private fun setOnClickListeners() {
         binding.buttonCart.setOnClickListener {
             findNavController().navigate(RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToCartFragment())
         }

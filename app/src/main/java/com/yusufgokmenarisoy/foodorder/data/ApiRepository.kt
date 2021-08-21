@@ -22,6 +22,10 @@ class ApiRepository @Inject constructor(
 
     fun getOrderHistoryOfUser(token: String) = performNetworkOperation { remoteDataSource.getOrderHistoryOfUser(token) }
 
+    fun changePassword(token: String, changePasswordBody: ChangePasswordBody) = performNetworkOperation { remoteDataSource.changePassword(token, changePasswordBody) }
+
+    fun updateProfile(token: String, updateProfileBody: UpdateProfileBody) = performNetworkOperation { remoteDataSource.updateProfile(token, updateProfileBody) }
+
     //Restaurants
 
     fun getRestaurantById(restaurantId: Int) = performNetworkOperation { remoteDataSource.getRestaurantById(restaurantId) }
@@ -35,6 +39,8 @@ class ApiRepository @Inject constructor(
     fun getRestaurantMenu(restaurantId: Int) = performNetworkOperation { remoteDataSource.getRestaurantMenu(restaurantId) }
 
     //Orders
+
+    fun getPaymentTypes() = performNetworkOperation { remoteDataSource.getPaymentTypes() }
 
     fun createOrder(token: String, orderBody: CreateOrderBody) = performNetworkOperation { remoteDataSource.createOrder(token, orderBody) }
 
