@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,6 +17,7 @@ import com.yusufgokmenarisoy.foodorder.data.entity.UserOrder
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentHomeBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.AddressAdapter
 import com.yusufgokmenarisoy.foodorder.util.AddressOnClick
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
@@ -27,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
     //Adapters
@@ -47,10 +50,14 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fetchData()
         initAdapters()
-        initViews()
         setOnClickListeners()
         setObservers()
+    }
+
+    private fun fetchData() {
+        sharedViewModel.getAddresses()
     }
 
     private fun initAdapters() {
@@ -72,34 +79,16 @@ class HomeFragment : BaseFragment() {
 
         orderHistoryAdapter = HomeOrderHistoryAdapter(object : OrderOnClick {
             override fun onClick(order: UserOrder) {
-                //TODO: navigate to order history
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToOrderDetailFragment(order))
             }
         })
         binding.recyclerViewOrderHistory.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerViewOrderHistory.adapter = orderHistoryAdapter
     }
 
-    private fun initViews() {
-        val user = viewModel.getUser()
-        val userWelcome = "Merhaba ${user.name},"
-        binding.textViewWelcomeUser.text = userWelcome
-        val image = when (user.image) {
-            "2" -> R.drawable.avatar_2
-            "3" -> R.drawable.avatar_3
-            "4" -> R.drawable.avatar_4
-            "5" -> R.drawable.avatar_5
-            "6" -> R.drawable.avatar_6
-            "7" -> R.drawable.avatar_7
-            "8" -> R.drawable.avatar_8
-            else -> R.drawable.avatar_1
-        }
-        binding.imageButtonProfile.setImageResource(image)
-        binding.nestedScrollView.isNestedScrollingEnabled = true
-    }
-
     private fun setOnClickListeners() {
         binding.imageButtonProfile.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment(viewModel.getUser(), addressArray))
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
         }
         binding.buttonCart.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCartFragment())
@@ -107,21 +96,15 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setObservers() {
-        viewModel.restaurants.observe(viewLifecycleOwner, {
-            if (it != null) {
-                when (it.status) {
-                    Resource.Status.LOADING -> binding.progressBar.show()
-                    Resource.Status.SUCCESS -> {
-                        it.data?.restaurants?.let { restaurants ->
-                            restaurantAdapter.setData(ArrayList(restaurants))
-                        }
-                    }
-                    Resource.Status.ERROR -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                }
-            }
+        sharedViewModel.user.observe(viewLifecycleOwner, {
+            viewModel.getPopularRestaurants(it.cityId?: 1)
+            observeRestaurants()
+            val userWelcome = "Merhaba ${it.name},"
+            binding.textViewWelcomeUser.text = userWelcome
+            binding.imageButtonProfile.setImageResource(sharedViewModel.getUserImage())
         })
 
-        viewModel.addresses.observe(viewLifecycleOwner, {
+        sharedViewModel.addresses.observe(viewLifecycleOwner, {
             if (it != null) {
                 if (it.status == Resource.Status.SUCCESS) {
                     it.data?.let { response ->
@@ -152,6 +135,29 @@ class HomeFragment : BaseFragment() {
                 } else if(it.status == Resource.Status.ERROR) {
                     binding.progressBar.hide()
                     binding.textViewLabelOrderHistoryWarning.show()
+                }
+            }
+        })
+
+        sharedViewModel.cartItemCount.observe(viewLifecycleOwner, {
+            if (it > 0) {
+                val text = "${getString(R.string.btn_basket)} ($it)"
+                binding.buttonCart.text = text
+            }
+        })
+    }
+
+    private fun observeRestaurants() {
+        viewModel.restaurants.observe(viewLifecycleOwner, {
+            if (it != null) {
+                when (it.status) {
+                    Resource.Status.LOADING -> binding.progressBar.show()
+                    Resource.Status.SUCCESS -> {
+                        it.data?.restaurants?.let { restaurants ->
+                            restaurantAdapter.setData(ArrayList(restaurants))
+                        }
+                    }
+                    Resource.Status.ERROR -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         })

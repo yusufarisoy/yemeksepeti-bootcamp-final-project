@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,16 +17,19 @@ import com.yusufgokmenarisoy.foodorder.data.entity.Restaurant
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentCartBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
+import com.yusufgokmenarisoy.foodorder.util.OrderFoodAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CartFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: CartViewModel by viewModels()
     private lateinit var binding: FragmentCartBinding
-    private lateinit var adapter: CartItemAdapter
+    private lateinit var adapter: OrderFoodAdapter
     private var cart: List<CartItem>? = null
 
     override fun onCreateView(
@@ -56,7 +60,7 @@ class CartFragment : BaseFragment() {
     }
 
     private fun setAdapter() {
-        adapter = CartItemAdapter(object : CartItemOnClick {
+        adapter = OrderFoodAdapter(object : CartItemOnClick {
             override fun onClick(cartItem: CartItem) {
                 findNavController().navigate(CartFragmentDirections.actionCartFragmentToFoodDetailFragment(
                     Food(cartItem.id, viewModel.getRestaurantId(), cartItem.image, cartItem.name, cartItem.price, cartItem.ingredients)))
@@ -131,6 +135,7 @@ class CartFragment : BaseFragment() {
         dialog.findViewById<MaterialButton>(R.id.buttonYes).setOnClickListener {
             viewModel.clearCart()
             findNavController().popBackStack()
+            sharedViewModel.getCartItemCount()
             dialog.dismiss()
         }
         dialog.findViewById<MaterialButton>(R.id.buttonNo).setOnClickListener {

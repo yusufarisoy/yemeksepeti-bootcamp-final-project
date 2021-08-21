@@ -32,15 +32,18 @@ class FoodDetailViewModel @Inject constructor(
 
     init {
         checkCart()
-        viewModelScope.launch {
-            cartItemCount = apiRepository.getItemCount()
-        }
     }
 
     fun getFood(): Food = this.food
 
     fun setQuantity(quantity: Int) {
         this._quantity.value = quantity
+    }
+
+    fun setCartItemCount(count: Int) {
+        if (this.cartItemCount == 0 && count != 0) {
+            this.cartItemCount = count
+        }
     }
 
     fun isInCart(): Boolean = this.inCart

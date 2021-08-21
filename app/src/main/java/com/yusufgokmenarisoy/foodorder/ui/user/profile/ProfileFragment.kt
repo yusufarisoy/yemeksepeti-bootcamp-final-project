@@ -5,20 +5,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.yusufgokmenarisoy.foodorder.R
 import com.yusufgokmenarisoy.foodorder.data.entity.Address
+import com.yusufgokmenarisoy.foodorder.data.entity.User
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentProfileBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
 import com.yusufgokmenarisoy.foodorder.ui.MainActivity
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.AddressAdapter
 import com.yusufgokmenarisoy.foodorder.util.AddressOnClick
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
@@ -28,9 +30,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: ProfileViewModel by viewModels()
     private lateinit var binding: FragmentProfileBinding
     private lateinit var addressAdapter: AddressAdapter
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,27 +48,34 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
+        setObservers()
         initAdapters()
         setOnClickListeners()
     }
 
-    private fun initViews() {
-        val user = viewModel.getUser()
-        val image = when (user.image) {
-            "2" -> R.drawable.avatar_2
-            "3" -> R.drawable.avatar_3
-            "4" -> R.drawable.avatar_4
-            "5" -> R.drawable.avatar_5
-            "6" -> R.drawable.avatar_6
-            "7" -> R.drawable.avatar_7
-            "8" -> R.drawable.avatar_8
-            else -> R.drawable.avatar_1
-        }
-        binding.imageView.setImageResource(image)
-        val name = "${user.name} ${user.surname}"
-        binding.textViewName.text = name
-        binding.textViewEmail.text = user.email
+    private fun setObservers() {
+        sharedViewModel.user.observe(viewLifecycleOwner, {
+            user = it
+            binding.imageView.setImageResource(sharedViewModel.getUserImage())
+            val name = "${it.name} ${it.surname}"
+            binding.textViewName.text = name
+            binding.textViewEmail.text = it.email
+        })
+
+        sharedViewModel.addresses.observe(viewLifecycleOwner, {
+            when (it.status) {
+                Resource.Status.LOADING -> binding.progressBar.show()
+                Resource.Status.SUCCESS -> {
+                    binding.progressBar.hide()
+                    it.data?.let { response ->
+                        if (response.success) {
+                            addressAdapter.setData(ArrayList(response.addresses!!.toList()))
+                        }
+                    }
+                }
+                Resource.Status.ERROR -> binding.progressBar.hide()
+            }
+        })
     }
 
     private fun initAdapters() {
@@ -75,15 +86,11 @@ class ProfileFragment : BaseFragment() {
         })
         binding.recyclerViewAddresses.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewAddresses.adapter = addressAdapter
-
-        if (viewModel.addresses.isNotEmpty()) {
-            addressAdapter.setData(ArrayList(viewModel.addresses.toList()))
-        }
     }
 
     private fun setOnClickListeners() {
         binding.buttonEditProfile.setOnClickListener {
-            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(viewModel.getUser(), viewModel.getToken()))
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment())
         }
 
         binding.buttonAddAddress.setOnClickListener {
@@ -91,7 +98,7 @@ class ProfileFragment : BaseFragment() {
         }
 
         binding.buttonOrderHistory.setOnClickListener {
-
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToOrderHistoryFragment())
         }
 
         binding.buttonChangePassword.setOnClickListener {
@@ -134,7 +141,7 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun changePassword(currentPassword: String, newPassword: String) {
-        viewModel.changePassword(currentPassword, newPassword).observe(viewLifecycleOwner, {
+        viewModel.changePassword(sharedViewModel.getToken()!!, currentPassword, newPassword).observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> binding.progressBar.show()
                 Resource.Status.SUCCESS -> {

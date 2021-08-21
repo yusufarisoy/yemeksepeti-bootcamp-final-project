@@ -15,8 +15,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewProfile"
-            app:cardCornerRadius="@dimen/space_8"
-            android:elevation="@dimen/space_8"
+            app:cardCornerRadius="@dimen/space_16"
+            android:elevation="4dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_16"

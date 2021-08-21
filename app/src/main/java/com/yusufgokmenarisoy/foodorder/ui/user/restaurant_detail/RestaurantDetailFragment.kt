@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.yusufgokmenarisoy.foodorder.R
 import com.yusufgokmenarisoy.foodorder.data.entity.Food
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentRestaurantDetailBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RestaurantDetailFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: RestaurantDetailViewModel by viewModels()
     private lateinit var binding: FragmentRestaurantDetailBinding
     private lateinit var adapter: FoodAdapter
@@ -38,6 +42,7 @@ class RestaurantDetailFragment : BaseFragment() {
         initViews()
         setOnClickListeners()
         fetchData()
+        setObservers()
     }
 
     private fun initViews() {
@@ -93,6 +98,15 @@ class RestaurantDetailFragment : BaseFragment() {
                         binding.textViewLabelMenuWarning.show()
                     }
                 }
+            }
+        })
+    }
+
+    private fun setObservers() {
+        sharedViewModel.cartItemCount.observe(viewLifecycleOwner, {
+            if (it > 0) {
+                val text = "${getString(R.string.btn_basket)} ($it)"
+                binding.buttonCart.text = text
             }
         })
     }

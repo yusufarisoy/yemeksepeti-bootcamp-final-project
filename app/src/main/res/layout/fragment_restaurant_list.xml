@@ -48,12 +48,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <View
+        android:id="@+id/viewCount1"
+        android:background="@color/gray_700"
+        android:layout_width="30dp"
+        android:layout_height="0.6dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintTop_toTopOf="@id/textViewCount"
+        app:layout_constraintBottom_toBottomOf="@id/textViewCount"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewCount"
+        android:textSize="13sp"
+        android:text="@string/label_restaurant_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_4"
+        android:layout_marginTop="@dimen/space_16"
+        app:layout_constraintStart_toEndOf="@id/viewCount1"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddressDetail"/>
+
+    <View
+        android:id="@+id/viewCount2"
+        android:background="@color/gray_700"
+        android:layout_width="0dp"
+        android:layout_height="0.6dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="@dimen/space_4"
+        app:layout_constraintTop_toTopOf="@id/textViewCount"
+        app:layout_constraintBottom_toBottomOf="@id/textViewCount"
+        app:layout_constraintStart_toEndOf="@id/textViewCount"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRestaurants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_16"
-        app:layout_constraintTop_toBottomOf="@id/textViewAddressDetail"
+        android:layout_marginTop="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/textViewCount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -13,12 +14,14 @@ import com.yusufgokmenarisoy.foodorder.R
 import com.yusufgokmenarisoy.foodorder.data.entity.Food
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentFoodDetailBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FoodDetailFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: FoodDetailViewModel by viewModels()
     private lateinit var binding: FragmentFoodDetailBinding
     private lateinit var food: Food
@@ -38,11 +41,18 @@ class FoodDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        food = viewModel.getFood()
+        initData()
         initViews()
         initDialog()
         setOnClickListeners()
         setObServers()
+    }
+
+    private fun initData() {
+        food = viewModel.getFood()
+        sharedViewModel.cartItemCount.observe(viewLifecycleOwner, {
+            viewModel.setCartItemCount(it)
+        })
     }
 
     private fun initViews() {
@@ -72,6 +82,7 @@ class FoodDetailFragment : BaseFragment() {
                 }
                 Snackbar.make(requireActivity().findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
                 findNavController().popBackStack()
+                sharedViewModel.getCartItemCount()
             } else {
                 showClearCartAndAddItemDialog()
             }
@@ -122,6 +133,7 @@ class FoodDetailFragment : BaseFragment() {
             viewModel.removeItemFromCart()
             Snackbar.make(requireActivity().findViewById(android.R.id.content), "Ürün sepetinizden çıkarıldı.", Snackbar.LENGTH_SHORT).show()
             findNavController().popBackStack()
+            sharedViewModel.getCartItemCount()
         }
         dialog.show()
     }
@@ -133,6 +145,7 @@ class FoodDetailFragment : BaseFragment() {
             viewModel.clearCartAndAddItem()
             Snackbar.make(requireActivity().findViewById(android.R.id.content), "${food.name} sepete eklendi.", Snackbar.LENGTH_SHORT).show()
             findNavController().popBackStack()
+            sharedViewModel.getCartItemCount()
         }
         dialog.show()
     }

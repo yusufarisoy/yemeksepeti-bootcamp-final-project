@@ -13,10 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor(private val apiRepository: ApiRepository) : ViewModel() {
 
-    private val token = apiRepository.getString(TOKEN)
     private val firstLaunch = apiRepository.getBoolean(FIRST_LAUNCH)
-
-    fun getToken(): String? = this.token
 
     fun isFirstLaunch(): Boolean = this.firstLaunch
 

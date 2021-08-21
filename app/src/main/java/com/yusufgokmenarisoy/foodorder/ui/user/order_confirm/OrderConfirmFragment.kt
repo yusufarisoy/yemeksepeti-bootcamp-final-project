@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.yusufgokmenarisoy.foodorder.data.entity.PaymentType
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentOrderConfirmBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class OrderConfirmFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: OrderConfirmViewModel by viewModels()
     private lateinit var binding: FragmentOrderConfirmBinding
     private var addressList = listOf<Address>()
@@ -162,6 +165,7 @@ class OrderConfirmFragment : BaseFragment() {
                 viewModel.orderReceived()
                 Snackbar.make(requireActivity().findViewById(android.R.id.content), "Siparişiniz başarıyla alındı.", Snackbar.LENGTH_LONG).show()
                 findNavController().popBackStack(R.id.homeFragment, true)
+                sharedViewModel.getCartItemCount()
             }
         })
     }

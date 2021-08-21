@@ -6,11 +6,13 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentLoginBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Common.Companion.validatePassword
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
@@ -19,6 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var binding: FragmentLoginBinding
 
@@ -66,8 +69,7 @@ class LoginFragment : BaseFragment() {
                 login(email, password)
                 binding.textInputLayoutEmail.error = null
             } else {
-                binding.textInputLayoutEmail.error = " "
-                binding.textInputLayoutPassword.error = "Lütfen tüm alanları doldurun."
+                showErrors("Lütfen tüm alanları doldurun.")
             }
         }
 
@@ -84,15 +86,27 @@ class LoginFragment : BaseFragment() {
                 }
                 Resource.Status.SUCCESS -> {
                     binding.progressBar.hide()
-                    viewModel.saveToken(it.data!!.token)
-                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment(it.data.user, it.data.token))
+                    it.data?.let { response ->
+                        if (response.success) {
+                            viewModel.saveToken(response.token)
+                            sharedViewModel.setToken(response.token)
+                            sharedViewModel.setUser(response.user)
+                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                        } else {
+                            showErrors(it.message)
+                        }
+                    }
                 }
                 Resource.Status.ERROR -> {
                     binding.progressBar.hide()
-                    binding.textInputLayoutEmail.error = " "
-                    binding.textInputLayoutPassword.error = it.message
+                    showErrors(it.message)
                 }
             }
         })
+    }
+
+    private fun showErrors(message: String?) {
+        binding.textInputLayoutEmail.error = " "
+        binding.textInputLayoutPassword.error = message
     }
 }

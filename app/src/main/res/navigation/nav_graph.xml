@@ -61,12 +61,6 @@
         android:name="com.yusufgokmenarisoy.foodorder.ui.user.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-        <argument
-            android:name="user"
-            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.User" />
-        <argument
-            android:name="token"
-            app:argType="string" />
         <action
             android:id="@+id/action_homeFragment_to_restaurantListFragment"
             app:destination="@id/restaurantListFragment" />
@@ -79,6 +73,9 @@
         <action
             android:id="@+id/action_homeFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantListFragment"
@@ -128,18 +125,15 @@
         android:name="com.yusufgokmenarisoy.foodorder.ui.user.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
-        <argument
-            android:name="user"
-            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.User" />
-        <argument
-            android:name="addresses"
-            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Address[]" />
         <action
             android:id="@+id/action_profileFragment_to_addressFragment"
             app:destination="@id/addressFragment" />
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -173,12 +167,6 @@
         android:name="com.yusufgokmenarisoy.foodorder.ui.user.edit_profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
-        <argument
-            android:name="user"
-            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.User" />
-        <argument
-            android:name="token"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addressFragment"
@@ -189,5 +177,23 @@
             android:name="address"
             app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Address"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.order_history.OrderHistoryFragment"
+        android:label="fragment_order_history"
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.user.order_detail.OrderDetailFragment"
+        android:label="fragment_rating"
+        tools:layout="@layout/fragment_order_detail" >
+        <argument
+            android:name="order"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.UserOrder" />
     </fragment>
 </navigation>

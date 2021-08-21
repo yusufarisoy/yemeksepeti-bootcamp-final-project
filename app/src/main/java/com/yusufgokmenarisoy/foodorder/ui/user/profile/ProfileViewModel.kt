@@ -16,25 +16,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val apiRepository: ApiRepository,
-    args: SavedStateHandle
+    private val apiRepository: ApiRepository
 ) : ViewModel() {
-
-    private val token = apiRepository.getString(TOKEN)
-    private val user: User = args.get<User>("user")!!
-    val addresses: Array<Address> = args.get<Array<Address>>("addresses")!!
-
-    fun getUser(): User = this.user
-
-    fun getToken(): String = this.token!!
 
     fun controlPasswords(currentPassword: String, newPassword: String, newPasswordRepeat: String): Boolean {
         return newPassword == newPasswordRepeat && currentPassword.length > 3 && newPassword.length > 3 &&
                 currentPassword.validatePassword() && newPassword.validatePassword()
     }
 
-    fun changePassword(currentPassword: String, newPassword: String): LiveData<Resource<SuccessResponse>> =
-        apiRepository.changePassword(token!!, ChangePasswordBody(currentPassword, newPassword))
+    fun changePassword(token: String, currentPassword: String, newPassword: String): LiveData<Resource<SuccessResponse>> =
+        apiRepository.changePassword(token, ChangePasswordBody(currentPassword, newPassword))
 
     fun logout() {
         apiRepository.saveString(TOKEN, "")

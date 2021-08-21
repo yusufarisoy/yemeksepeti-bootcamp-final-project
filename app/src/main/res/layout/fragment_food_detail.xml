@@ -96,7 +96,7 @@
             <ImageButton
                 android:id="@+id/buttonDecrease"
                 android:src="@drawable/ic_hyphen"
-                android:backgroundTint="@color/gray_100"
+                android:backgroundTint="@color/gray_600"
                 android:layout_width="40dp"
                 android:layout_height="40dp"/>
             <TextView
@@ -111,7 +111,7 @@
             <ImageButton
                 android:id="@+id/buttonIncrease"
                 android:src="@drawable/ic_add"
-                android:backgroundTint="@color/gray_100"
+                android:backgroundTint="@color/gray_600"
                 android:layout_width="40dp"
                 android:layout_height="40dp"/>
         </LinearLayout>

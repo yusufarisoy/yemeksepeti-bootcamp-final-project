@@ -20,16 +20,16 @@ class RestaurantListViewModel @Inject constructor(
     lateinit var restaurants: LiveData<Resource<RestaurantListResponse>>
 
     init {
-        getRestaurants()
+        getRestaurantsByDistrict()
     }
 
     fun getAddress(): Address = this.address
 
-    private fun getRestaurants() {
-        this.restaurants = apiRepository.getRestaurantsByDistrict(address.districtId)
+    private fun getRestaurantsByDistrict() {
+        this.restaurants = apiRepository.getRestaurants(null, address.districtId)
     }
 
     private fun getRestaurantsByCity() {
-        this.restaurants = apiRepository.getRestaurantsByCity(address.cityId)
+        this.restaurants = apiRepository.getRestaurants(address.cityId, null)
     }
 }

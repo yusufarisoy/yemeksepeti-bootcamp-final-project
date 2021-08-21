@@ -19,13 +19,17 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
 
     suspend fun updateProfile(token: String, updateProfileBody: UpdateProfileBody) = getResult { apiService.updateProfile("Bearer $token", updateProfileBody) }
 
-    //Restaurants
+    suspend fun createAddress(token: String, updateAddressBody: UpdateAddressBody) = getResult { apiService.createAddress("Bearer $token", updateAddressBody) }
+
+    suspend fun updateAddress(token: String, addressId: Int, updateAddressBody: UpdateAddressBody) = getResult { apiService.updateAddress("Bearer $token", addressId, updateAddressBody) }
+
+    suspend fun deleteAddress(token: String, addressId: Int) = getResult { apiService.deleteAddress("Bearer $token", addressId) }
+
+        //Restaurants
 
     suspend fun getRestaurantById(restaurantId: Int) = getResult { apiService.getRestaurantById(restaurantId) }
 
-    suspend fun getRestaurantsByDistrict(districtId: Int) = getResult { apiService.getRestaurantsByDistrict(districtId) }
-
-    suspend fun getRestaurantsByCity(cityId: Int) = getResult { apiService.getRestaurantsByCity(cityId) }
+    suspend fun getRestaurants(cityId: Int?, districtId: Int?) = getResult { apiService.getRestaurants(cityId, districtId) }
 
     suspend fun getMostPopularRestaurants(cityId: Int) = getResult { apiService.getMostPopularRestaurants(cityId) }
 
@@ -35,7 +39,21 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
 
     suspend fun getPaymentTypes() = getResult { apiService.getPaymentTypes() }
 
+    suspend fun getFoodsOfOrder(token: String, orderId: Int) = getResult { apiService.getFoodsOfOrder("Bearer $token", orderId) }
+
     suspend fun createOrder(token: String, orderBody: CreateOrderBody) = getResult { apiService.createOrder("Bearer $token", orderBody) }
 
     suspend fun addFoodsOfOrder(token: String, orderId: Int, addOrderFoodBody: AddOrderFoodBody) = getResult { apiService.addFoodsOfOrder("Bearer $token", orderId, addOrderFoodBody) }
+
+    //Ratings
+
+    suspend fun createRating(token: String, ratingBody: RatingBody) = getResult { apiService.createRating("Bearer $token", ratingBody) }
+
+    suspend fun getRatings(restaurantId: Int?, orderId: Int?) = getResult { apiService.getRatings(restaurantId, orderId) }
+
+    //Cities And Districts
+
+    suspend fun getCities() = getResult { apiService.getCities() }
+
+    suspend fun getDistricts(cityId: Int) = getResult { apiService.getDistricts(cityId) }
 }

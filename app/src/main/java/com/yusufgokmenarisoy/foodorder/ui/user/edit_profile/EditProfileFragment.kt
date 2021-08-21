@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -12,6 +13,7 @@ import com.yusufgokmenarisoy.foodorder.R
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.databinding.FragmentEditProfileBinding
 import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
+import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,8 +21,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class EditProfileFragment : BaseFragment() {
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val viewModel: EditProfileViewModel by viewModels()
     private lateinit var binding: FragmentEditProfileBinding
+    private var image: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,12 +43,14 @@ class EditProfileFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        val user = viewModel.getUser()
-        binding.imageView.setImageResource(viewModel.getImage())
-        binding.editTextEmail.setText(user.email)
-        binding.editTextName.setText(user.name)
-        binding.editTextSurname.setText(user.surname)
-        binding.editTextPhoneNumber.setText(user.phoneNumber)
+        sharedViewModel.user.observe(viewLifecycleOwner, {
+            image = sharedViewModel.getUserImage()
+            binding.imageView.setImageResource(image)
+            binding.editTextEmail.setText(it.email)
+            binding.editTextName.setText(it.name)
+            binding.editTextSurname.setText(it.surname)
+            binding.editTextPhoneNumber.setText(it.phoneNumber)
+        })
     }
     private fun setOnClickListeners() {
         binding.buttonCancel.setOnClickListener {
@@ -59,7 +65,8 @@ class EditProfileFragment : BaseFragment() {
             val surname = binding.editTextSurname.text.toString()
             val phoneNumber = binding.editTextPhoneNumber.text.toString()
             if (viewModel.validateInputs(email, name, surname)) {
-                viewModel.updateProfile(email, name,  surname, phoneNumber).observe(viewLifecycleOwner, {
+                viewModel.updateProfile(sharedViewModel.getToken()!!, email, name,  surname,
+                    image, phoneNumber).observe(viewLifecycleOwner, {
                     when (it.status) {
                         Resource.Status.LOADING -> binding.progressBar.show()
                         Resource.Status.SUCCESS -> {
@@ -68,6 +75,7 @@ class EditProfileFragment : BaseFragment() {
                                 if (response.success) {
                                     Snackbar.make(requireActivity().findViewById(android.R.id.content), "Bilgileriniz başarıyla güncellendi.", Snackbar.LENGTH_SHORT).show()
                                     findNavController().popBackStack()
+                                    sharedViewModel.updateUser(email, name, surname, phoneNumber)
                                 } else {
                                     Toast.makeText(context, "Bir hata meydana geldi: ${it.message}", Toast.LENGTH_SHORT).show()
                                 }
@@ -100,7 +108,7 @@ class EditProfileFragment : BaseFragment() {
                 R.id.avatar_7 -> R.drawable.avatar_7
                 else -> R.drawable.avatar_8
             }
-            viewModel.setImage(image)
+            this.image = image
             binding.imageView.setImageResource(image)
             dialog.dismiss()
         }

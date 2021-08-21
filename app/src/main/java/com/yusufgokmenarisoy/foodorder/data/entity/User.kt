@@ -1,10 +1,7 @@
 package com.yusufgokmenarisoy.foodorder.data.entity
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class User(
     @SerializedName("id")
     val id: Int,
@@ -29,4 +26,4 @@ data class User(
 
     @SerializedName("phone_number")
     var phoneNumber: String
-) : Parcelable
+)

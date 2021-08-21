@@ -26,13 +26,17 @@ class ApiRepository @Inject constructor(
 
     fun updateProfile(token: String, updateProfileBody: UpdateProfileBody) = performNetworkOperation { remoteDataSource.updateProfile(token, updateProfileBody) }
 
+    fun createAddress(token: String, updateAddressBody: UpdateAddressBody) = performNetworkOperation { remoteDataSource.createAddress(token, updateAddressBody) }
+
+    fun updateAddress(token: String, addressId: Int, updateAddressBody: UpdateAddressBody) = performNetworkOperation { remoteDataSource.updateAddress(token, addressId, updateAddressBody) }
+
+    fun deleteAddress(token: String, addressId: Int) = performNetworkOperation { remoteDataSource.deleteAddress(token, addressId) }
+
     //Restaurants
 
     fun getRestaurantById(restaurantId: Int) = performNetworkOperation { remoteDataSource.getRestaurantById(restaurantId) }
 
-    fun getRestaurantsByDistrict(districtId: Int) = performNetworkOperation { remoteDataSource.getRestaurantsByDistrict(districtId) }
-
-    fun getRestaurantsByCity(cityId: Int) = performNetworkOperation { remoteDataSource.getRestaurantsByCity(cityId) }
+    fun getRestaurants(cityId: Int?, districtId: Int?) = performNetworkOperation { remoteDataSource.getRestaurants(cityId, districtId) }
 
     fun getMostPopularRestaurants(cityId: Int) = performNetworkOperation { remoteDataSource.getMostPopularRestaurants(cityId) }
 
@@ -42,9 +46,23 @@ class ApiRepository @Inject constructor(
 
     fun getPaymentTypes() = performNetworkOperation { remoteDataSource.getPaymentTypes() }
 
+    fun getFoodsOfOrder(token: String, orderId: Int) = performNetworkOperation { remoteDataSource.getFoodsOfOrder(token, orderId) }
+
     fun createOrder(token: String, orderBody: CreateOrderBody) = performNetworkOperation { remoteDataSource.createOrder(token, orderBody) }
 
     fun addFoodsOfOrder(token: String, orderId: Int, addOrderFoodBody: AddOrderFoodBody) = performNetworkOperation { remoteDataSource.addFoodsOfOrder(token, orderId, addOrderFoodBody) }
+
+    //Ratings
+
+    fun createRating(token: String, ratingBody: RatingBody) = performNetworkOperation { remoteDataSource.createRating(token, ratingBody) }
+
+    fun getRatings(restaurantId: Int?, orderId: Int?) = performNetworkOperation { remoteDataSource.getRatings(restaurantId, orderId) }
+
+    //Cities and Districts
+
+    fun getCities() = performNetworkOperation { remoteDataSource.getCities() }
+
+    fun getDistricts(cityId: Int) = performNetworkOperation { remoteDataSource.getDistricts(cityId) }
 
 
 

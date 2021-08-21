@@ -7,4 +7,137 @@
     android:layout_height="match_parent"
     tools:context=".ui.user.address.AddressFragment">
 
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:text="@string/title_add_address"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/black_800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_64"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutTitle"
+        android:hint="@string/hint_title"
+        app:boxStrokeColor="@color/gray_600"
+        app:hintTextColor="@color/gray_600"
+        app:errorTextAppearance="@style/customTextInputLayoutError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        android:layout_marginHorizontal="@dimen/space_32"
+        app:boxCornerRadiusTopStart="@dimen/space_16"
+        app:boxCornerRadiusTopEnd="@dimen/space_16"
+        app:boxCornerRadiusBottomStart="@dimen/space_16"
+        app:boxCornerRadiusBottomEnd="@dimen/space_16"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTitle"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textViewLabelCity"
+        android:textColor="@color/black_800"
+        android:textSize="16sp"
+        android:text="@string/hint_select_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_32"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutTitle"/>
+
+    <Spinner
+        android:id="@+id/spinnerCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        app:layout_constraintStart_toStartOf="@id/textViewLabelCity"
+        app:layout_constraintTop_toBottomOf="@id/textViewLabelCity"/>
+
+    <TextView
+        android:id="@+id/textViewLabelDistrict"
+        android:textColor="@color/black_800"
+        android:textSize="16sp"
+        android:text="@string/hint_select_district"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_32"
+        android:layout_marginTop="@dimen/space_32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerCity"/>
+
+    <Spinner
+        android:visibility="gone"
+        android:id="@+id/spinnerDistrict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_4"
+        app:layout_constraintStart_toStartOf="@id/textViewLabelDistrict"
+        app:layout_constraintTop_toBottomOf="@id/textViewLabelDistrict"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutAddress"
+        android:hint="@string/label_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_32"
+        android:layout_marginHorizontal="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/spinnerDistrict"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextAddress"
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:lines="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSave"
+        android:text="@string/btn_save"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/space_32"
+        app:cornerRadius="@dimen/space_32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutAddress"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutAddress" />
+
+    <com.google.android.material.button.MaterialButton
+        android:visibility="gone"
+        android:id="@+id/buttonDelete"
+        android:text="Sil"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/space_32"
+        app:backgroundTint="@color/primary_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        app:layout_constraintStart_toStartOf="@id/textInputLayoutAddress"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutAddress" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_16"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

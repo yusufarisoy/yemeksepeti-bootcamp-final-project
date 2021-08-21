@@ -18,6 +18,10 @@
     <string name="hint_new_password_repeat">Yeni Şifre Tekrar</string>
     <string name="hint_phone_number">Telefon Numarası</string>
     <string name="hint_register">Hesabınız yok mu?</string>
+    <string name="hint_title">Başlık</string>
+    <string name="hint_select_city">Şehir Seçin</string>
+    <string name="hint_select_district">İlçe Seçin</string>
+    <string name="hint_comment">Yorumunuz</string>
     <!-- Buttons -->
     <string name="btn_login">Giriş Yap</string>
     <string name="btn_register">Kaydol</string>
@@ -39,6 +43,7 @@
     <string name="btn_order_history">Geçmiş Siparişlerim</string>
     <string name="btn_cash">Nakit</string>
     <string name="btn_change">Değiştir</string>
+    <string name="btn_send">Gönder</string>
     <!-- Labels -->
     <string name="title_welcome">Hoşgeldin!</string>
     <string name="label_popular">Popüler</string>
@@ -57,6 +62,10 @@
     <string name="label_remove_item_from_cart">Ürünü sepetinizden çıkarmak istediğinize emin misiniz?</string>
     <string name="label_clear_cart_and_add">Sepetinizde farklı bir restorandan ürün mevcut. Sepetinizi boşaltıp bu restoranın ürününü eklemek ister misiniz?</string>
     <string name="value_1">1</string>
+    <string name="value_2">2</string>
+    <string name="value_3">3</string>
+    <string name="value_4">4</string>
+    <string name="value_5">5</string>
     <string name="title_basket">Sepetim</string>
     <string name="label_total">Toplam</string>
     <string name="label_clear_cart_warning">Sepeti boşaltmak istediğinize emin misiniz?</string>
@@ -66,4 +75,10 @@
     <string name="label_order_note">Sipariş Notu</string>
     <string name="label_change_password">Şifre Değiştir</string>
     <string name="title_edit_profile">Profili Düzenle</string>
+    <string name="title_edit_address">Adresi Düzenle</string>
+    <string name="title_add_address">Adres Ekle</string>
+    <string name="label_restaurant_count">0 restoran bulundu</string>
+    <string name="label_no_order_warning">Görünüşe göre henüz siparişin yok. Onlarca restoran arasından istediğin siparişi hemen verç</string>
+    <string name="title_delete_address_warning">Adresi silmek istediğinize emin misiniz?</string>
+    <string name="label_score">Puan *</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.cart
+package com.yusufgokmenarisoy.foodorder.util
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yusufgokmenarisoy.foodorder.data.entity.CartItem
 import com.yusufgokmenarisoy.foodorder.databinding.RecyclerItemCartBinding
+import com.yusufgokmenarisoy.foodorder.ui.user.cart.CartItemOnClick
 
-class CartItemAdapter(private val listener: CartItemOnClick) : RecyclerView.Adapter<CartItemAdapter.CartItemViewHolder>() {
+class OrderFoodAdapter(private val listener: CartItemOnClick) : RecyclerView.Adapter<OrderFoodAdapter.CartItemViewHolder>() {
 
     private var cart = ArrayList<CartItem>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemViewHolder = CartItemViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemViewHolder =
+        CartItemViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: CartItemViewHolder, position: Int) {
         val item = cart[position]

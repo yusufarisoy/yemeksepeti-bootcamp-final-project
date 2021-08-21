@@ -19,7 +19,7 @@
         android:id="@+id/cardViewRate"
         app:cardCornerRadius="12dp"
         android:backgroundTint="@color/green_500"
-        android:layout_width="65dp"
+        android:layout_width="60dp"
         android:layout_height="25dp"
         android:layout_marginTop="@dimen/space_4"
         android:layout_marginStart="@dimen/space_8"
@@ -30,7 +30,7 @@
             android:id="@+id/textViewRate"
             android:layout_gravity="center"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -38,10 +38,12 @@
 
     <TextView
         android:id="@+id/textViewName"
+        android:textSize="17sp"
+        android:textStyle="bold"
         android:textColor="@color/black_800"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginStart="@dimen/space_8"
         app:layout_constraintStart_toEndOf="@id/cardViewRate"
         app:layout_constraintTop_toTopOf="@id/cardViewRate"
         app:layout_constraintBottom_toBottomOf="@id/cardViewRate"/>
@@ -51,15 +53,14 @@
         android:background="@drawable/ic_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_16"
-        android:layout_marginStart="@dimen/space_8"
+        android:layout_marginStart="@dimen/space_4"
         app:layout_constraintStart_toStartOf="@id/cardViewRate"
-        app:layout_constraintTop_toBottomOf="@id/cardViewRate"/>
+        app:layout_constraintBottom_toBottomOf="@id/imageView"/>
 
     <TextView
         android:id="@+id/textViewAvgDeliveryTimeText"
         android:textStyle="bold"
-        android:textColor="@color/black_800"
+        android:textColor="@color/gray_800"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_4"
@@ -70,7 +71,7 @@
     <TextView
         android:id="@+id/textViewMinFee"
         android:textStyle="bold"
-        android:textColor="@color/black_800"
+        android:textColor="@color/gray_800"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_16"
@@ -79,7 +80,7 @@
         app:layout_constraintTop_toTopOf="@id/textViewAvgDeliveryTimeText"/>
 
     <View
-        android:background="@color/black_800"
+        android:background="@color/gray_800"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="@dimen/space_48"
