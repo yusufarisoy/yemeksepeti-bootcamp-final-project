@@ -105,37 +105,33 @@ class HomeFragment : BaseFragment() {
         })
 
         sharedViewModel.addresses.observe(viewLifecycleOwner, {
-            if (it != null) {
-                if (it.status == Resource.Status.SUCCESS) {
-                    it.data?.let { response ->
-                        if (response.success) {
-                            addressAdapter.setData(ArrayList(response.addresses!!))
-                            addressArray = response.addresses.toTypedArray()
-                        } else {
-                            binding.textViewLabelAddressWarning.show()
-                        }
+            if (it.status == Resource.Status.SUCCESS) {
+                it.data?.let { response ->
+                    if (response.success) {
+                        addressAdapter.setData(ArrayList(response.addresses!!))
+                        addressArray = response.addresses.toTypedArray()
+                    } else {
+                        binding.textViewLabelAddressWarning.show()
                     }
-                } else if(it.status == Resource.Status.ERROR) {
-                    binding.textViewLabelAddressWarning.show()
                 }
+            } else if(it.status == Resource.Status.ERROR) {
+                binding.textViewLabelAddressWarning.show()
             }
         })
 
         viewModel.orders.observe(viewLifecycleOwner, {
-            if (it != null) {
-                if (it.status == Resource.Status.SUCCESS) {
-                    binding.progressBar.hide()
-                    it.data?.let { response ->
-                        if (response.success) {
-                            orderHistoryAdapter.setData(ArrayList(response.orders!!))
-                        } else {
-                            binding.textViewLabelOrderHistoryWarning.show()
-                        }
+            if (it.status == Resource.Status.SUCCESS) {
+                binding.progressBar.hide()
+                it.data?.let { response ->
+                    if (response.success) {
+                        orderHistoryAdapter.setData(ArrayList(response.orders!!))
+                    } else {
+                        binding.textViewLabelOrderHistoryWarning.show()
                     }
-                } else if(it.status == Resource.Status.ERROR) {
-                    binding.progressBar.hide()
-                    binding.textViewLabelOrderHistoryWarning.show()
                 }
+            } else if(it.status == Resource.Status.ERROR) {
+                binding.progressBar.hide()
+                binding.textViewLabelOrderHistoryWarning.show()
             }
         })
 
@@ -156,16 +152,14 @@ class HomeFragment : BaseFragment() {
 
     private fun observeRestaurants() {
         viewModel.restaurants.observe(viewLifecycleOwner, {
-            if (it != null) {
-                when (it.status) {
-                    Resource.Status.LOADING -> binding.progressBar.show()
-                    Resource.Status.SUCCESS -> {
-                        it.data?.restaurants?.let { restaurants ->
-                            restaurantAdapter.setData(ArrayList(restaurants))
-                        }
+            when (it.status) {
+                Resource.Status.LOADING -> binding.progressBar.show()
+                Resource.Status.SUCCESS -> {
+                    it.data?.restaurants?.let { restaurants ->
+                        restaurantAdapter.setData(ArrayList(restaurants))
                     }
-                    Resource.Status.ERROR -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
+                Resource.Status.ERROR -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
