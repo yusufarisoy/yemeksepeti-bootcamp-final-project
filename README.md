@@ -1,5 +1,5 @@
 # FoodOrder
-Food ordering application with Kotlin for Yemeksepeti Android Bootcamp.
+Food ordering application with **Kotlin** for **Yemeksepeti Android Bootcamp.**
 
 ## Technologies and Libraries
 - MVVM
@@ -16,7 +16,8 @@ Food ordering application with Kotlin for Yemeksepeti Android Bootcamp.
 - Lottie
 
 ## Back-end
-I developed a RESTful API for application back-end with Node.js. It's live on [Heroku](https://www.heroku.com/), can look to the [repository](https://github.com/yusufarisoy/yemeksepeti-bootcamp-final-project-server) for more details.
+I developed a **RESTful** API for application back-end with Node.js. It's live on [Heroku](https://www.heroku.com/).
+You can look to the [yemeksepeti-bootcamp-final-project-server](https://github.com/yusufarisoy/yemeksepeti-bootcamp-final-project-server) for more details.
 ```
 https://yemeksepeti-bootcamp-project.herokuapp.com/
 ```
