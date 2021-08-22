@@ -16,8 +16,8 @@ Food ordering application with **Kotlin** for **Yemeksepeti Android Bootcamp.**
 - Lottie
 
 ## Back-end
-<p>I developed a **RESTful** API for application back-end with Node.js. It's live on [Heroku](https://www.heroku.com/).<br>
-You can look to the [Yemeksepeti Bootcamp Server](https://github.com/yusufarisoy/yemeksepeti-bootcamp-final-project-server) for more details.</p>
+<p>I developed a **RESTful** API for application back-end with Node.js. It's live on [Heroku](https://www.heroku.com/).<br></p>
+You can look to the [Yemeksepeti Bootcamp Server](https://github.com/yusufarisoy/yemeksepeti-bootcamp-final-project-server) for more details.
 ```
 https://yemeksepeti-bootcamp-project.herokuapp.com/
 ```
