@@ -106,9 +106,9 @@ class FoodDetailViewModel @Inject constructor(
         viewModelScope.launch {
             cartItem.value?.let {
                 apiRepository.delete(it)
-                if (cartItemCount == 1) {
-                    apiRepository.saveInt(CART_RESTAURANT, -1)
-                }
+            }
+            if (cartItemCount == 1) {
+                apiRepository.saveInt(CART_RESTAURANT, -1)
             }
         }
     }

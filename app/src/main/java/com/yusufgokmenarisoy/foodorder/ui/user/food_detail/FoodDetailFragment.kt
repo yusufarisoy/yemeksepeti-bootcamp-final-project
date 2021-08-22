@@ -133,7 +133,7 @@ class FoodDetailFragment : BaseFragment() {
             viewModel.removeItemFromCart()
             Snackbar.make(requireActivity().findViewById(android.R.id.content), "Ürün sepetinizden çıkarıldı.", Snackbar.LENGTH_SHORT).show()
             findNavController().popBackStack()
-            sharedViewModel.getCartItemCount()
+            sharedViewModel.decreaseCartItemCount()
         }
         dialog.show()
     }
@@ -145,7 +145,7 @@ class FoodDetailFragment : BaseFragment() {
             viewModel.clearCartAndAddItem()
             Snackbar.make(requireActivity().findViewById(android.R.id.content), "${food.name} sepete eklendi.", Snackbar.LENGTH_SHORT).show()
             findNavController().popBackStack()
-            sharedViewModel.getCartItemCount()
+            sharedViewModel.setItemCount(1)
         }
         dialog.show()
     }

@@ -75,7 +75,7 @@ class EditProfileFragment : BaseFragment() {
                                 if (response.success) {
                                     Snackbar.make(requireActivity().findViewById(android.R.id.content), "Bilgileriniz başarıyla güncellendi.", Snackbar.LENGTH_SHORT).show()
                                     findNavController().popBackStack()
-                                    sharedViewModel.updateUser(email, name, surname, phoneNumber)
+                                    sharedViewModel.updateUser(drawableToId(image), email, name, surname, phoneNumber)
                                 } else {
                                     Toast.makeText(context, "Bir hata meydana geldi: ${it.message}", Toast.LENGTH_SHORT).show()
                                 }
@@ -113,5 +113,18 @@ class EditProfileFragment : BaseFragment() {
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+    private fun drawableToId(image: Int): String {
+        return when (image) {
+            R.drawable.avatar_1 -> "1"
+            R.drawable.avatar_2 -> "2"
+            R.drawable.avatar_3 -> "3"
+            R.drawable.avatar_4 -> "4"
+            R.drawable.avatar_5 -> "5"
+            R.drawable.avatar_6 -> "6"
+            R.drawable.avatar_7 -> "7"
+            else -> "8"
+        }
     }
 }

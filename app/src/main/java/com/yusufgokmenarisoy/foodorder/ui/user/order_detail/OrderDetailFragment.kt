@@ -71,6 +71,11 @@ class OrderDetailFragment : BaseFragment() {
         }
         val price = "${order.totalPrice.toInt() / 2} TL"
         binding.textViewTotalPrice.text = price
+
+        binding.radioGroup.children.forEach {
+            it.isEnabled = true
+        }
+        binding.editTextReview.isEnabled = true
     }
 
     private fun fetchData() {

@@ -162,6 +162,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_8"
         android:paddingHorizontal="@dimen/space_4"
+        android:paddingBottom="@dimen/space_16"
         app:layout_constraintTop_toBottomOf="@id/textViewLabelMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

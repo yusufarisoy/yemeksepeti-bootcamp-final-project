@@ -160,8 +160,8 @@ class OrderConfirmFragment : BaseFragment() {
                 binding.progressBar.hide()
                 viewModel.orderReceived()
                 Snackbar.make(requireActivity().findViewById(android.R.id.content), "Siparişiniz başarıyla alındı.", Snackbar.LENGTH_LONG).show()
-                findNavController().popBackStack(R.id.homeFragment, true)
-                sharedViewModel.getCartItemCount()
+                findNavController().popBackStack(R.id.homeFragment, false)
+                sharedViewModel.setItemCount(0)
                 sharedViewModel.newOrder()
             }
         })

@@ -63,7 +63,7 @@
     <string name="label_address_warning_profile">Kayıtlı adresiniz bulunamadı.</string>
     <string name="label_address_warning">Kayıtlı adresiniz bulunamadı, sipariş vermek için hemen bir tane ekle!</string>
     <string name="label_order_history_warning">Hiç eski siparişini bulamadık.</string>
-    <string name="label_restaurant_warning">Şehrinde kayıtlı restoran bulamadık!</string>
+    <string name="label_restaurant_warning">Bulunduğun ilde kayıtlı restoran bulamadık!</string>
     <string name="label_min_order">Min. Sipariş</string>
     <string name="label_address">Adres</string>
     <string name="label_avg_delivery">Teslimat</string>

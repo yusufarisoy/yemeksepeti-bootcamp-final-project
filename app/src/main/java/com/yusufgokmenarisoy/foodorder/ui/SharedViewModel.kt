@@ -50,8 +50,9 @@ class SharedViewModel @Inject constructor(private val apiRepository: ApiReposito
         this._user.value = user
     }
 
-    fun updateUser(email: String, name: String, surname: String, phoneNumber: String) {
+    fun updateUser(image: String, email: String, name: String, surname: String, phoneNumber: String) {
         val user = this._user.value!!
+        user.image = image
         user.email = email
         user.name = name
         user.surname = surname
@@ -74,6 +75,20 @@ class SharedViewModel @Inject constructor(private val apiRepository: ApiReposito
         viewModelScope.launch {
             _cartItemCount.value = apiRepository.getItemCount()
         }
+    }
+
+    fun setItemCount(count: Int) {
+        _cartItemCount.value = count
+    }
+
+    fun increaseCartItemCount() {
+        val count = _cartItemCount.value
+        _cartItemCount.value = count!! + 1
+    }
+
+    fun decreaseCartItemCount() {
+        val count = _cartItemCount.value
+        _cartItemCount.value = count!! - 1
     }
 
     fun newOrder() {

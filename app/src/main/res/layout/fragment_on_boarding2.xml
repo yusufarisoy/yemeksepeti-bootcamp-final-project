@@ -9,13 +9,13 @@
 
     <ImageView
         android:id="@+id/imageViewIcon"
-        android:src="@drawable/on_boarding_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/on_boarding_2"
         app:layout_constraintBottom_toTopOf="@id/textViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -25,7 +25,7 @@
         android:textColor="@color/black_800"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginBottom="@dimen/space_64"
+        android:layout_marginBottom="120dp"
         android:layout_marginHorizontal="@dimen/space_16"
         app:layout_constraintTop_toBottomOf="@id/imageViewIcon"
         app:layout_constraintStart_toStartOf="parent"

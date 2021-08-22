@@ -36,14 +36,14 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun startApp() {
-        if (viewModel.isFirstLaunch()) {
-            Handler(Looper.getMainLooper()).postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (viewModel.isFirstLaunch()) {
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToOnBoardingFragment())
                 viewModel.saveFirstLaunch()
-            }, 500)
-        } else {
-            authorize()
-        }
+            } else {
+                authorize()
+            }
+        }, 1000)
     }
 
     private fun authorize() {

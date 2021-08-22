@@ -12,13 +12,9 @@ import javax.inject.Inject
 class OwnerHomeViewModel @Inject constructor(private val apiRepository: ApiRepository) : ViewModel() {
 
     lateinit var restaurants: LiveData<Resource<RestaurantListResponse>>
-    private var restaurantsInitialized = false
 
     fun getRestaurantsByOwnerId(ownerId: Int) {
-        if (!restaurantsInitialized) {
-            restaurantsInitialized = true
-            restaurants = apiRepository.getRestaurants(ownerId, null, null)
-        }
+        restaurants = apiRepository.getRestaurants(ownerId, null, null)
     }
 
     fun updateRestaurants(ownerId: Int) {

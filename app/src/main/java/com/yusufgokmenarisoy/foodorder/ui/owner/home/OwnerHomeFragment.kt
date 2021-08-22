@@ -102,6 +102,9 @@ class OwnerHomeFragment : BaseFragment() {
         binding.buttonSettings.setOnClickListener {
             showSettingsDialog()
         }
+        binding.buttonAddRestaurant.setOnClickListener {
+            findNavController().navigate(OwnerHomeFragmentDirections.actionOwnerHomeFragmentToOwnerRestaurantFragment(null))
+        }
     }
 
     private fun showSettingsDialog() {

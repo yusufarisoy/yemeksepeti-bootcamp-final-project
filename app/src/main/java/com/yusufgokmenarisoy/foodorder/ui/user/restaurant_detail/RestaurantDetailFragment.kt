@@ -52,11 +52,12 @@ class RestaurantDetailFragment : BaseFragment() {
         Glide.with(requireContext()).load(restaurant.bannerImage).into(binding.imageViewBanner)
         Glide.with(requireContext()).load(restaurant.image).into(binding.imageViewImage)
         binding.textViewName.text = restaurant.name
-        restaurant.rating?.let {
-            val rate = it.slice(0..2)
-            binding.textViewRate.text = rate
+        if (restaurant.rating != null) {
+            binding.textViewRate.text = restaurant.rating.slice(0..2)
+
+        } else {
+            binding.textViewRate.text = "-"
         }
-        binding.textViewRate.text = "-"
         val address = "${restaurant.city}/${restaurant.district}"
         binding.textViewRestaurantAddress.text = address
         val minOrder = "${restaurant.minOrderFee} TL"
