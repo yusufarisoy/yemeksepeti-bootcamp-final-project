@@ -1,4 +1,4 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.restaurant_detail
+package com.yusufgokmenarisoy.foodorder.util
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -12,7 +12,8 @@ class FoodAdapter(private val listener: FoodOnClick) : RecyclerView.Adapter<Food
 
     private var menu = ArrayList<Food>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder = MenuViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder =
+        MenuViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val food = menu[position]

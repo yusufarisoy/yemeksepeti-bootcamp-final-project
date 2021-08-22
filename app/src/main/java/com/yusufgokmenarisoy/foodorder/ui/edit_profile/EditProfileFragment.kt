@@ -1,4 +1,4 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.edit_profile
+package com.yusufgokmenarisoy.foodorder.ui.edit_profile
 
 import android.app.Dialog
 import android.os.Bundle

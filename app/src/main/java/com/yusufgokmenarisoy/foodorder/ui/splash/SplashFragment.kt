@@ -3,7 +3,6 @@ package com.yusufgokmenarisoy.foodorder.ui.splash
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,19 +48,24 @@ class SplashFragment : BaseFragment() {
 
     private fun authorize() {
         val token = sharedViewModel.getToken()
-        if (token != null && token != "") {
+        if (token != null && token != "") { //TODO: internet connection control
             viewModel.authorizeToken(token).observe(viewLifecycleOwner, {
                 if (it.status == Resource.Status.SUCCESS) {
-                    if (it.data!!.success) {
-                        sharedViewModel.setUser(it.data.user!!)
-                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
-                    } else {
-                        Log.v("SplashFragment", "${it.data}")
-                        viewModel.removeToken()
-                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+                    it.data?.let { response ->
+                        if (response.success) {
+                            sharedViewModel.setUser(response.user!!)
+                            if (response.user.role == "user") {
+                                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+                            } else {
+                                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToOwnerHomeFragment())
+                            }
+                        }
+                        else {
+                            viewModel.removeToken()
+                            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+                        }
                     }
                 } else if(it.status == Resource.Status.ERROR) {
-                    Log.v("SplashFragment", "${it.data}")
                     viewModel.removeToken()
                     findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
                 }

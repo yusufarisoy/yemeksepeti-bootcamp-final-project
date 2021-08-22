@@ -2,7 +2,7 @@ package com.yusufgokmenarisoy.foodorder.data.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class UserOrderResponse(
+data class FoodListResponse(
     @SerializedName("success")
     val success: Boolean,
 
@@ -10,5 +10,5 @@ data class UserOrderResponse(
     val message: String,
 
     @SerializedName("data")
-    val orders: List<UserOrder>?
+    val foods: List<Food>?
 )

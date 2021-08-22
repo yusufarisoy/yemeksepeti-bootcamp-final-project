@@ -1,4 +1,4 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.restaurant_list
+package com.yusufgokmenarisoy.foodorder.util
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yusufgokmenarisoy.foodorder.data.entity.Restaurant
 import com.yusufgokmenarisoy.foodorder.databinding.RecyclerItemRestaurantBinding
-import com.yusufgokmenarisoy.foodorder.util.RestaurantOnClick
 
-class RestaurantAdapter(private val listener: RestaurantOnClick) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
+class RestaurantAdapter(private val isUserList: Boolean, private val listener: RestaurantOnClick) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
 
     private var restaurantList = ArrayList<Restaurant>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder = RestaurantViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder =
+        RestaurantViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
         val restaurant = restaurantList[position]
-        holder.bind(restaurant, listener)
+        holder.bind(isUserList, restaurant, listener)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -33,10 +33,19 @@ class RestaurantAdapter(private val listener: RestaurantOnClick) : RecyclerView.
 
     class RestaurantViewHolder(private val binding: RecyclerItemRestaurantBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(restaurant: Restaurant, listener: RestaurantOnClick) {
+        fun bind(isUserList: Boolean, restaurant: Restaurant, listener: RestaurantOnClick) {
             Glide.with(binding.root).load(restaurant.image).into(binding.imageView)
-            binding.textViewName.text = restaurant.name
-            binding.textViewRate.text = restaurant.rating.slice(0..2)
+            val name = if (!isUserList) {
+                "${restaurant.name}, ${restaurant.district}"
+            } else {
+                restaurant.name
+            }
+            binding.textViewName.text = name
+            if (restaurant.rating != null) {
+                binding.textViewRate.text = restaurant.rating.slice(0..2)
+            } else {
+                binding.textViewRate.text = "-"
+            }
             val deliveryTime = "${restaurant.avgDeliveryTime}dk"
             binding.textViewAvgDeliveryTimeText.text = deliveryTime
             val minFee = "${restaurant.minOrderFee} TL"

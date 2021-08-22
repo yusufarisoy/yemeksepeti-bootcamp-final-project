@@ -60,13 +60,13 @@ class OrderConfirmFragment : BaseFragment() {
     }
 
     private fun setObservers() {
-        viewModel.addresses.observe(viewLifecycleOwner, {
-            if (it != null) {
-                when (it.status) {
-                    Resource.Status.LOADING -> binding.progressBar.show()
-                    Resource.Status.SUCCESS -> {
-                        if (it.data!!.success) {
-                            it.data.addresses?.let { addresses ->
+        sharedViewModel.addresses.observe(viewLifecycleOwner, {
+            when (it.status) {
+                Resource.Status.LOADING -> binding.progressBar.show()
+                Resource.Status.SUCCESS -> {
+                    it.data?.let { response ->
+                        if (response.success) {
+                            response.addresses?.let { addresses ->
                                 addressList = addresses
                                 setAddressAdapterData()
                             }
@@ -74,29 +74,24 @@ class OrderConfirmFragment : BaseFragment() {
                             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                         }
                     }
-                    Resource.Status.ERROR -> {
-                        binding.progressBar.hide()
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                    }
                 }
+                Resource.Status.ERROR -> Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
             }
         })
         viewModel.paymentTypes.observe(viewLifecycleOwner, {
-            if (it != null) {
-                if (it.status == Resource.Status.SUCCESS) {
-                    binding.progressBar.hide()
-                    it.data?.let { response ->
-                        if (response.success) {
-                            paymentTypeList = it.data.paymentTypes
-                            setPaymentTypeAdapterData()
-                        } else {
-                            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                        }
+            if (it.status == Resource.Status.SUCCESS) {
+                binding.progressBar.hide()
+                it.data?.let { response ->
+                    if (response.success) {
+                        paymentTypeList = it.data.paymentTypes
+                        setPaymentTypeAdapterData()
+                    } else {
+                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                     }
-                } else if(it.status == Resource.Status.ERROR) {
-                    binding.progressBar.hide()
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
+            } else if(it.status == Resource.Status.ERROR) {
+                binding.progressBar.hide()
+                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -138,15 +133,15 @@ class OrderConfirmFragment : BaseFragment() {
     }
 
     private fun createOrder(deliveryAddressId: Int, paymentTypeId: Int, note: String) {
-        viewModel.createOrder(deliveryAddressId, paymentTypeId, note).observe(viewLifecycleOwner, {
+        viewModel.createOrder(sharedViewModel.getToken()!!, deliveryAddressId, paymentTypeId, note).observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> binding.progressBar.show()
                 Resource.Status.SUCCESS -> {
-                    binding.progressBar.hide()
                     it.data?.let { createResponse ->
                         if (createResponse.success) {
                             addFoodsOfOrder(createResponse.createdOrder.id)
                         } else {
+                            binding.progressBar.hide()
                             Toast.makeText(context, createResponse.message, Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -160,12 +155,14 @@ class OrderConfirmFragment : BaseFragment() {
     }
 
     private fun addFoodsOfOrder(orderId: Int) {
-        viewModel.addFoodsOfOrder(orderId).observe(viewLifecycleOwner, { addResponse ->
-            if (addResponse.status == Resource.Status.SUCCESS) {
+        viewModel.addFoodsOfOrder(sharedViewModel.getToken()!!, orderId).observe(viewLifecycleOwner, {
+            if (it.status == Resource.Status.SUCCESS) {
+                binding.progressBar.hide()
                 viewModel.orderReceived()
                 Snackbar.make(requireActivity().findViewById(android.R.id.content), "Siparişiniz başarıyla alındı.", Snackbar.LENGTH_LONG).show()
                 findNavController().popBackStack(R.id.homeFragment, true)
                 sharedViewModel.getCartItemCount()
+                sharedViewModel.newOrder()
             }
         })
     }

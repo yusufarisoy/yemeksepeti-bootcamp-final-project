@@ -22,6 +22,14 @@
     <string name="hint_select_city">Şehir Seçin</string>
     <string name="hint_select_district">İlçe Seçin</string>
     <string name="hint_comment">Yorumunuz</string>
+    <string name="hint_image_url">Resim Adresi</string>
+    <string name="hint_banner_image_url">Banner Resim Adresi</string>
+    <string name="hint_restaurant_name">Adı</string>
+    <string name="hint_min_order_fee">Min. Sipariş Ücreti</string>
+    <string name="hint_avg_delivery_time">Tahmini Teslimat Süresi</string>
+    <string name="hint_it_name">Adı</string>
+    <string name="hint_ingredients">İçindekiler</string>
+    <string name="hint_price">Ücreti</string>
     <!-- Buttons -->
     <string name="btn_login">Giriş Yap</string>
     <string name="btn_register">Kaydol</string>
@@ -44,6 +52,9 @@
     <string name="btn_cash">Nakit</string>
     <string name="btn_change">Değiştir</string>
     <string name="btn_send">Gönder</string>
+    <string name="btn_delete_restaurant">Restorani Sil</string>
+    <string name="btn_preview">Ön İzle</string>
+    <string name="btn_delete_food">Ürünü Sil</string>
     <!-- Labels -->
     <string name="title_welcome">Hoşgeldin!</string>
     <string name="label_popular">Popüler</string>
@@ -78,7 +89,14 @@
     <string name="title_edit_address">Adresi Düzenle</string>
     <string name="title_add_address">Adres Ekle</string>
     <string name="label_restaurant_count">0 restoran bulundu</string>
-    <string name="label_no_order_warning">Görünüşe göre henüz siparişin yok. Onlarca restoran arasından istediğin siparişi hemen verç</string>
+    <string name="label_no_order_warning">Görünüşe göre henüz siparişin yok. Onlarca restoran arasından istediğin siparişi hemen ver.</string>
     <string name="title_delete_address_warning">Adresi silmek istediğinize emin misiniz?</string>
     <string name="label_score">Puan *</string>
+    <string name="title_restaurants">Restoranlarım</string>
+    <string name="label_no_restaurant_warning">Kayıtlı bir restoranınız bulunmamakta. Hemen restoranınızı kaydedip binlerce müşteriye ulaşın.</string>
+    <string name="title_add_restaurant">Restoran Ekle</string>
+    <string name="title_edit_restaurant">Restoran Düzenle</string>
+    <string name="label_no_active_order">Aktif siparişiniz bulunmamaktadır.</string>
+    <string name="label_restaurant_no_food_warning">Restoranın menüsünde kayıtlı ürün bulunmuyor. Hemen ürünlerinizi ekleyip binlerce müşteriye ulaştırın.</string>
+    <string name="title_add_food">Yemek Ekle</string>
 </resources>

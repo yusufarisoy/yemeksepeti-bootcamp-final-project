@@ -1,4 +1,4 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.restaurant_detail
+package com.yusufgokmenarisoy.foodorder.util
 
 import com.yusufgokmenarisoy.foodorder.data.entity.Food
 

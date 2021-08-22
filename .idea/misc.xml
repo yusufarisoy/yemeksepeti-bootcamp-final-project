@@ -23,6 +23,7 @@
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/custom_avatar_dialog.xml" value="0.26680896478121663" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/custom_dialog.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/custom_editable_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/custom_settings_dialog.xml" value="0.44814814814814813" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_address.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_create_address.xml" value="0.36666666666666664" />
@@ -37,6 +38,13 @@
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_order_confirm.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_order_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_order_history.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_owner_food.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_owner_food_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_owner_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_owner_order_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_owner_order_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_owner_restaurant.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_owner_restaurant_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_rating.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
@@ -53,6 +61,7 @@
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_radi.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_radio.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_restaurant.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/ygkmn/Desktop/Android/YemeksepetiBootcamp/FinalProject/app/src/main/res/layout/recycler_item_restaurant_order.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

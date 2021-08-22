@@ -1,4 +1,4 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.edit_profile
+package com.yusufgokmenarisoy.foodorder.ui.edit_profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

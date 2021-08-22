@@ -17,6 +17,8 @@ import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
 import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
+import com.yusufgokmenarisoy.foodorder.util.FoodAdapter
+import com.yusufgokmenarisoy.foodorder.util.FoodOnClick
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,7 +52,11 @@ class RestaurantDetailFragment : BaseFragment() {
         Glide.with(requireContext()).load(restaurant.bannerImage).into(binding.imageViewBanner)
         Glide.with(requireContext()).load(restaurant.image).into(binding.imageViewImage)
         binding.textViewName.text = restaurant.name
-        binding.textViewRate.text = restaurant.rating.slice(0..2)
+        restaurant.rating?.let {
+            val rate = it.slice(0..2)
+            binding.textViewRate.text = rate
+        }
+        binding.textViewRate.text = "-"
         val address = "${restaurant.city}/${restaurant.district}"
         binding.textViewRestaurantAddress.text = address
         val minOrder = "${restaurant.minOrderFee} TL"

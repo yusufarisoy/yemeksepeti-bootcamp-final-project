@@ -28,6 +28,14 @@ class SharedViewModel @Inject constructor(private val apiRepository: ApiReposito
     val cartItemCount: LiveData<Int>
         get() = _cartItemCount
 
+    private val _updateOrders: MutableLiveData<Boolean> = MutableLiveData(false)
+    val updateOrders: LiveData<Boolean>
+        get() = _updateOrders
+
+    private val _updateRestaurants: MutableLiveData<Boolean> = MutableLiveData(false)
+    val updateRestaurants: LiveData<Boolean>
+        get() = _updateRestaurants
+
     init {
         getCartItemCount()
     }
@@ -66,6 +74,22 @@ class SharedViewModel @Inject constructor(private val apiRepository: ApiReposito
         viewModelScope.launch {
             _cartItemCount.value = apiRepository.getItemCount()
         }
+    }
+
+    fun newOrder() {
+        _updateOrders.value = true
+    }
+
+    fun ordersUpdated() {
+        _updateOrders.value = false
+    }
+
+    fun restaurantsChanged() {
+        _updateRestaurants.value = true
+    }
+
+    fun restaurantsUpdated() {
+        _updateRestaurants.value = false
     }
 
     fun getUserImage(): Int = when (_user.value!!.image) {

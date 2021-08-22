@@ -25,6 +25,11 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_ownerHomeFragment"
+            app:destination="@id/ownerHomeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -37,6 +42,11 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_ownerHomeFragment"
+            app:destination="@id/ownerHomeFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -122,7 +132,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.yusufgokmenarisoy.foodorder.ui.user.profile.ProfileFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -164,7 +174,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.yusufgokmenarisoy.foodorder.ui.user.edit_profile.EditProfileFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.edit_profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
     </fragment>
@@ -195,5 +205,75 @@
         <argument
             android:name="order"
             app:argType="com.yusufgokmenarisoy.foodorder.data.entity.UserOrder" />
+    </fragment>
+
+    <!-- OWNER -->
+    <fragment
+        android:id="@+id/ownerHomeFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.owner.home.OwnerHomeFragment"
+        android:label="fragment_owner_home"
+        tools:layout="@layout/fragment_owner_home" >
+        <action
+            android:id="@+id/action_ownerHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_ownerHomeFragment_to_ownerRestaurantFragment"
+            app:destination="@id/ownerRestaurantFragment" />
+        <action
+            android:id="@+id/action_ownerHomeFragment_to_ownerRestaurantDetailFragment"
+            app:destination="@id/ownerRestaurantDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownerRestaurantFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.owner.restaurant.OwnerRestaurantFragment"
+        android:label="fragment_owner_restaurant"
+        tools:layout="@layout/fragment_owner_restaurant" >
+        <argument
+            android:name="restaurant"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Restaurant"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownerRestaurantDetailFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.owner.restaurant_detail.OwnerRestaurantDetailFragment"
+        android:label="fragment_owner_restaurant_detail"
+        tools:layout="@layout/fragment_owner_restaurant_detail" >
+        <argument
+            android:name="restaurant"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Restaurant" />
+        <action
+            android:id="@+id/action_ownerRestaurantDetailFragment_to_ownerFoodFragment"
+            app:destination="@id/ownerFoodFragment" />
+        <action
+            android:id="@+id/action_ownerRestaurantDetailFragment_to_ownerRestaurantFragment"
+            app:destination="@id/ownerRestaurantFragment" />
+        <action
+            android:id="@+id/action_ownerRestaurantDetailFragment_to_ownerOrderDetailFragment"
+            app:destination="@id/ownerOrderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownerFoodFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.owner.food.OwnerFoodFragment"
+        android:label="fragment_owner_food"
+        tools:layout="@layout/fragment_owner_food" >
+        <argument
+            android:name="food"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.Food"
+            app:nullable="true" />
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownerOrderDetailFragment"
+        android:name="com.yusufgokmenarisoy.foodorder.ui.owner.order_detail.OwnerOrderDetailFragment"
+        android:label="fragment_owner_order_detail"
+        tools:layout="@layout/fragment_owner_order_detail" >
+        <argument
+            android:name="order"
+            app:argType="com.yusufgokmenarisoy.foodorder.data.entity.RestaurantOrder" />
+        <argument
+            android:name="restaurantId"
+            app:argType="integer" />
     </fragment>
 </navigation>

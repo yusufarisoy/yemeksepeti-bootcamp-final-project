@@ -14,7 +14,7 @@ class HomeViewModel @Inject constructor(private val apiRepository: ApiRepository
 
     private val token = apiRepository.getString(TOKEN)
     lateinit var restaurants: LiveData<Resource<RestaurantListResponse>>
-    lateinit var orders: LiveData<Resource<UserOrderResponse>>
+    lateinit var orders: LiveData<Resource<UserOrderListResponse>>
     private var restaurantsInitialized = false
 
     init {
@@ -28,7 +28,7 @@ class HomeViewModel @Inject constructor(private val apiRepository: ApiRepository
         }
     }
 
-    private fun getOrderHistory(token: String) {
+    fun getOrderHistory(token: String) {
         orders = apiRepository.getOrderHistoryOfUser(token)
     }
 }

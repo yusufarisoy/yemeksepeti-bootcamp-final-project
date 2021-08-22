@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingVertical="@dimen/space_64"
-    tools:context=".ui.user.edit_profile.EditProfileFragment">
+    tools:context=".ui.edit_profile.EditProfileFragment">
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -75,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextName"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextSurname"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPhoneNumber"
-            android:inputType="textEmailAddress"
+            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>

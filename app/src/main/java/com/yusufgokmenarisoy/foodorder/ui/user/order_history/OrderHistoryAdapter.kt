@@ -35,14 +35,18 @@ class OrderHistoryAdapter(private val listener: OrderOnClick) : RecyclerView.Ada
 
         fun bind(order: UserOrder, listener: OrderOnClick) {
             Glide.with(binding.root).load(order.restaurantImage).into(binding.imageView)
-            binding.textViewDate.text = order.date.slice(0..2)
+            binding.textViewDate.text = order.date.slice(0..9)
             binding.textViewName.text = order.restaurant
             val address = "${order.city}, ${order.district}"
             binding.textViewAddress.text = address
-            binding.textViewRate.text = order.restaurantScore.slice(0..2)
+            if (order.restaurantScore != null) {
+                binding.textViewRate.text = order.restaurantScore.slice(0..2)
+            } else {
+                binding.textViewRate.text = "-"
+            }
             binding.textViewStatus.text = order.orderStatus
             binding.textViewPaymentType.text = order.paymentType
-            val price = "${order.totalPrice} TL"
+            val price = "${order.totalPrice.toInt() / 2} TL"
             binding.textViewPrice.text = price
             binding.itemLayout.setOnClickListener {
                 listener.onClick(order)

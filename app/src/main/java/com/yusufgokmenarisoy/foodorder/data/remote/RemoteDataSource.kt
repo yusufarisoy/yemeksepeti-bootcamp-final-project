@@ -25,15 +25,38 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
 
     suspend fun deleteAddress(token: String, addressId: Int) = getResult { apiService.deleteAddress("Bearer $token", addressId) }
 
-        //Restaurants
+    //Restaurants
+
+    suspend fun createRestaurant(token: String, restaurantBody: RestaurantBody) = getResult { apiService.createRestaurant("Bearer $token", restaurantBody) }
 
     suspend fun getRestaurantById(restaurantId: Int) = getResult { apiService.getRestaurantById(restaurantId) }
 
-    suspend fun getRestaurants(cityId: Int?, districtId: Int?) = getResult { apiService.getRestaurants(cityId, districtId) }
+    suspend fun getRestaurants(ownerId: Int?, cityId: Int?, districtId: Int?) = getResult { apiService.getRestaurants(ownerId, cityId, districtId) }
 
     suspend fun getMostPopularRestaurants(cityId: Int) = getResult { apiService.getMostPopularRestaurants(cityId) }
 
     suspend fun getRestaurantMenu(restaurantId: Int) = getResult { apiService.getRestaurantMenu(restaurantId) }
+
+    suspend fun getOrdersOfRestaurant(token: String, restaurantId: Int, statusId: Int?) = getResult { apiService.getOrdersOfRestaurant("Bearer $token",
+        restaurantId, statusId) }
+
+    suspend fun updateRestaurant(token: String, restaurantId: Int, restaurantBody: RestaurantBody) =
+        getResult { apiService.updateRestaurant("Bearer $token", restaurantId, restaurantBody) }
+
+    suspend fun updateOrderStatus(token: String, restaurantId: Int,orderId: Int, orderStatusUpdateBody: OrderStatusUpdateBody) =
+        getResult { apiService.updateOrderStatus("Bearer $token", restaurantId, orderId, orderStatusUpdateBody) }
+
+    suspend fun deleteRestaurant(token: String, restaurantId: Int) = getResult { apiService.deleteRestaurant("Bearer $token", restaurantId) }
+
+    //Restaurant Foods
+
+    suspend fun createFood(token: String, restaurantId: Int, foodBody: FoodBody) = getResult { apiService.createFood("Bearer $token", restaurantId, foodBody) }
+
+    suspend fun updateFood(token: String, restaurantId: Int, foodId: Int, foodBody: FoodBody) = getResult {
+        apiService.updateFood("Bearer $token", restaurantId, foodId, foodBody)
+    }
+
+    suspend fun deleteFood(token: String, restaurantId: Int, foodId: Int) = getResult { apiService.deleteFood("Bearer $token", restaurantId, foodId) }
 
     //Orders
 
@@ -43,7 +66,8 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
 
     suspend fun createOrder(token: String, orderBody: CreateOrderBody) = getResult { apiService.createOrder("Bearer $token", orderBody) }
 
-    suspend fun addFoodsOfOrder(token: String, orderId: Int, addOrderFoodBody: AddOrderFoodBody) = getResult { apiService.addFoodsOfOrder("Bearer $token", orderId, addOrderFoodBody) }
+    suspend fun addFoodsOfOrder(token: String, orderId: Int, addOrderFoodBody: AddOrderFoodBody) =
+        getResult { apiService.addFoodsOfOrder("Bearer $token", orderId, addOrderFoodBody) }
 
     //Ratings
 

@@ -1,13 +1,10 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.profile
+package com.yusufgokmenarisoy.foodorder.ui.profile
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.yusufgokmenarisoy.foodorder.data.ApiRepository
-import com.yusufgokmenarisoy.foodorder.data.entity.Address
 import com.yusufgokmenarisoy.foodorder.data.entity.ChangePasswordBody
 import com.yusufgokmenarisoy.foodorder.data.entity.SuccessResponse
-import com.yusufgokmenarisoy.foodorder.data.entity.User
 import com.yusufgokmenarisoy.foodorder.data.local.TOKEN
 import com.yusufgokmenarisoy.foodorder.data.remote.Resource
 import com.yusufgokmenarisoy.foodorder.util.Common.Companion.validatePassword

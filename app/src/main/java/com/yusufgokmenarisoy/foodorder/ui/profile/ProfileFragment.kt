@@ -1,4 +1,4 @@
-package com.yusufgokmenarisoy.foodorder.ui.user.profile
+package com.yusufgokmenarisoy.foodorder.ui.profile
 
 import android.app.Dialog
 import android.content.Intent
@@ -49,7 +49,6 @@ class ProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setObservers()
-        initAdapters()
         setOnClickListeners()
     }
 
@@ -60,8 +59,19 @@ class ProfileFragment : BaseFragment() {
             val name = "${it.name} ${it.surname}"
             binding.textViewName.text = name
             binding.textViewEmail.text = it.email
+            if (it.role == "user") {
+                initAdapters()
+                setAddressObserver()
+            } else {
+                binding.buttonOrderHistory.hide()
+                binding.textViewLabelAddresses.hide()
+                binding.buttonAddAddress.isEnabled = false
+                binding.buttonAddAddress.visibility = View.INVISIBLE
+            }
         })
+    }
 
+    private fun setAddressObserver() {
         sharedViewModel.addresses.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.LOADING -> binding.progressBar.show()
@@ -107,9 +117,8 @@ class ProfileFragment : BaseFragment() {
 
         binding.buttonLogout.setOnClickListener {
             viewModel.logout()
-            val intent = Intent(context, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+            startActivity(Intent(context, MainActivity::class.java))
+            requireActivity().finish()
         }
     }
 

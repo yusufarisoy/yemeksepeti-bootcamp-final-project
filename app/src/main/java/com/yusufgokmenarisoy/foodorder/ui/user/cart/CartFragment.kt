@@ -111,8 +111,11 @@ class CartFragment : BaseFragment() {
         binding.buttonConfirmCart.show()
         Glide.with(requireContext()).load(restaurant.image).into(binding.imageViewRestaurant)
         binding.textViewRestaurantName.text = restaurant.name
-        val rate = restaurant.rating.slice(0..2)
-        binding.textViewRate.text = rate
+        restaurant.rating?.let {
+            val rate = it.slice(0..2)
+            binding.textViewRate.text = rate
+        }
+        binding.textViewRate.text = "-"
         val deliveryTime = "${restaurant.avgDeliveryTime} dk"
         binding.textViewRestaurantAvgDeliveryTimeText.text = deliveryTime
         binding.layoutRestaurantDetail.setOnClickListener {

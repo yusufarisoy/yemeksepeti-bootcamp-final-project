@@ -26,10 +26,10 @@ class RestaurantListViewModel @Inject constructor(
     fun getAddress(): Address = this.address
 
     private fun getRestaurantsByDistrict() {
-        this.restaurants = apiRepository.getRestaurants(null, address.districtId)
+        this.restaurants = apiRepository.getRestaurants(null, null, address.districtId)
     }
 
     private fun getRestaurantsByCity() {
-        this.restaurants = apiRepository.getRestaurants(address.cityId, null)
+        this.restaurants = apiRepository.getRestaurants(null, address.cityId, null)
     }
 }

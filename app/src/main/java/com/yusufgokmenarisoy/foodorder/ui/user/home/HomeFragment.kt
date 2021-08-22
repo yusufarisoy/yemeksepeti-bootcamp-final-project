@@ -145,6 +145,13 @@ class HomeFragment : BaseFragment() {
                 binding.buttonCart.text = text
             }
         })
+
+        sharedViewModel.updateOrders.observe(viewLifecycleOwner, { isUpdate ->
+            if (isUpdate) {
+                viewModel.getOrderHistory(sharedViewModel.getToken()!!)
+                sharedViewModel.ordersUpdated()
+            }
+        })
     }
 
     private fun observeRestaurants() {

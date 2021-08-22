@@ -91,7 +91,11 @@ class LoginFragment : BaseFragment() {
                             viewModel.saveToken(response.token)
                             sharedViewModel.setToken(response.token)
                             sharedViewModel.setUser(response.user)
-                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                            if (response.user.role == "user") {
+                                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                            } else {
+                                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToOwnerHomeFragment())
+                            }
                         } else {
                             showErrors(it.message)
                         }

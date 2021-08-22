@@ -16,6 +16,7 @@ import com.yusufgokmenarisoy.foodorder.ui.BaseFragment
 import com.yusufgokmenarisoy.foodorder.ui.SharedViewModel
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.hide
 import com.yusufgokmenarisoy.foodorder.util.Extension.Companion.show
+import com.yusufgokmenarisoy.foodorder.util.RestaurantAdapter
 import com.yusufgokmenarisoy.foodorder.util.RestaurantOnClick
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,13 +41,12 @@ class RestaurantListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
-        initOnClickListeners()
-        fetchData()
+        setOnClickListeners()
         setObservers()
     }
 
     private fun initViews() {
-        adapter = RestaurantAdapter(object : RestaurantOnClick {
+        adapter = RestaurantAdapter(true, object : RestaurantOnClick {
             override fun onClick(restaurant: Restaurant) {
                 findNavController().navigate(RestaurantListFragmentDirections.actionRestaurantListFragmentToRestaurantDetailFragment(restaurant))
             }
@@ -60,13 +60,13 @@ class RestaurantListFragment : BaseFragment() {
         binding.textViewAddressDetail.text = addressDetail
     }
 
-    private fun initOnClickListeners() {
+    private fun setOnClickListeners() {
         binding.buttonCart.setOnClickListener {
             findNavController().navigate(RestaurantListFragmentDirections.actionRestaurantListFragmentToCartFragment())
         }
     }
 
-    private fun fetchData() {
+    private fun setObservers() {
         viewModel.restaurants.observe(viewLifecycleOwner, {
             if (it != null) {
                 when (it.status) {
@@ -90,9 +90,7 @@ class RestaurantListFragment : BaseFragment() {
                 }
             }
         })
-    }
 
-    private fun setObservers() {
         sharedViewModel.cartItemCount.observe(viewLifecycleOwner, {
             if (it > 0) {
                 val text = "${getString(R.string.btn_basket)} ($it)"

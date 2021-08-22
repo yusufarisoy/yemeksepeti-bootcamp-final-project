@@ -19,7 +19,7 @@ data class UserOrder(
     val restaurant: String,
 
     @SerializedName("restaurant_score")
-    val restaurantScore: String,
+    val restaurantScore: String?,
 
     @SerializedName("city")
     val city: String,

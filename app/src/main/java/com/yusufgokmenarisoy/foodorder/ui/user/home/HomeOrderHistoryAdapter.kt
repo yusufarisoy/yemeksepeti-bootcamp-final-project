@@ -39,7 +39,7 @@ class HomeOrderHistoryAdapter(private val listener: OrderOnClick) : RecyclerView
             binding.textViewName.text = order.restaurant
             val address = "${order.city}/${order.district}"
             binding.textViewAddress.text = address
-            val totalPrice = "${order.totalPrice} TL"
+            val totalPrice = "${order.totalPrice.toInt() / 2} TL"
             binding.textViewTotalPrice.text = totalPrice
             binding.itemLayout.setOnClickListener {
                 listener.onClick(order)

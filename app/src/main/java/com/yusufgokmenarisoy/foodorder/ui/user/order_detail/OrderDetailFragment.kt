@@ -48,14 +48,11 @@ class OrderDetailFragment : BaseFragment() {
         initAdapters()
         initViews()
         fetchData()
-        setOnClickListeners()
     }
 
     private fun initAdapters() {
         adapter = OrderFoodAdapter(object : CartItemOnClick {
-            override fun onClick(cartItem: CartItem) {
-
-            }
+            override fun onClick(cartItem: CartItem) { }
         })
         binding.recyclerViewFoodsOfOrder.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewFoodsOfOrder.adapter = adapter
@@ -67,8 +64,12 @@ class OrderDetailFragment : BaseFragment() {
         binding.textViewName.text = order.restaurant
         val address = "${order.city}, ${order.district}"
         binding.textViewAddress.text = address
-        binding.textViewRate.text = order.restaurantScore.slice(0..2)
-        val price = "${order.totalPrice} TL"
+        if (order.restaurantScore != null) {
+            binding.textViewRate.text = order.restaurantScore.slice(0..2)
+        } else {
+            binding.textViewRate.text = "-"
+        }
+        val price = "${order.totalPrice.toInt() / 2} TL"
         binding.textViewTotalPrice.text = price
     }
 
@@ -163,9 +164,5 @@ class OrderDetailFragment : BaseFragment() {
                 Toast.makeText(context, "Puan kısmını boş bırakmayın.", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    private fun setOnClickListeners() {
-
     }
 }
