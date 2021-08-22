@@ -18,7 +18,8 @@ Food ordering application with Kotlin for Yemeksepeti Android Bootcamp.
 ## Back-end
 I developed a RESTful API for application back-end with Node.js. It's live on [Heroku](https://www.heroku.com/), can look to the [repository](https://github.com/yusufarisoy/yemeksepeti-bootcamp-final-project-server) for more details.
 ```
-Endpoint: https://yemeksepeti-bootcamp-project.herokuapp.com/
+Endpoint
+https://yemeksepeti-bootcamp-project.herokuapp.com/
 ```
 
 ## App Content - User Account
