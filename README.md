@@ -35,11 +35,11 @@ https://yemeksepeti-bootcamp-project.herokuapp.com/
 - Can't add foods from different restaurants, if user wants can clear other foods and add the new one
 <img src="./app_preview/recording_2.gif" alt="gif" height="500"/>
 
-#### Profile, Addresses and Restaurant list of address
-<img src="./app_preview/recording_3.gif" alt="gif" height="500"/>
-
 #### Cart and Order Confirm
 <img src="./app_preview/recording_4.gif" alt="gif" height="500"/>
+
+#### Profile, Addresses and Restaurant list of address
+<img src="./app_preview/recording_3.gif" alt="gif" height="500"/>
 
 #### Order History, Order Review and Change Password
 - Regex used for password validation
