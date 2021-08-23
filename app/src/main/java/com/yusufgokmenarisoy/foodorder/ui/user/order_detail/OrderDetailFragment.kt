@@ -64,12 +64,7 @@ class OrderDetailFragment : BaseFragment() {
         binding.textViewName.text = order.restaurant
         val address = "${order.city}, ${order.district}"
         binding.textViewAddress.text = address
-        if (order.restaurantScore != null) {
-            binding.textViewRate.text = order.restaurantScore.slice(0..2)
-        } else {
-            binding.textViewRate.text = "-"
-        }
-        val price = "${order.totalPrice.toInt() / 2} TL"
+        val price = "${order.totalPrice.toInt()} TL"
         binding.textViewTotalPrice.text = price
     }
 

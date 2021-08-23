@@ -52,6 +52,10 @@ class OwnerHomeFragment : BaseFragment() {
             viewModel.getRestaurantsByOwnerId(it.id)
             setObservers()
         })
+        if (sharedViewModel.isUpdateRestaurants()) {
+            viewModel.updateRestaurants(ownerId!!)
+            sharedViewModel.restaurantsUpdated()
+        }
     }
 
     private fun initViews() {
@@ -82,12 +86,6 @@ class OwnerHomeFragment : BaseFragment() {
                     binding.progressBar.hide()
                     showWarnings()
                 }
-            }
-        })
-        sharedViewModel.updateRestaurants.observe(viewLifecycleOwner, { isUpdate ->
-            if (isUpdate && ownerId != null) {
-                viewModel.updateRestaurants(ownerId!!)
-                sharedViewModel.restaurantsUpdated()
             }
         })
     }

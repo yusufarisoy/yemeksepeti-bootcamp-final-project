@@ -39,14 +39,9 @@ class OrderHistoryAdapter(private val listener: OrderOnClick) : RecyclerView.Ada
             binding.textViewName.text = order.restaurant
             val address = "${order.city}, ${order.district}"
             binding.textViewAddress.text = address
-            if (order.restaurantScore != null) {
-                binding.textViewRate.text = order.restaurantScore.slice(0..2)
-            } else {
-                binding.textViewRate.text = "-"
-            }
             binding.textViewStatus.text = order.orderStatus
             binding.textViewPaymentType.text = order.paymentType
-            val price = "${order.totalPrice.toInt() / 2} TL"
+            val price = "${order.totalPrice.toInt()} TL"
             binding.textViewPrice.text = price
             binding.itemLayout.setOnClickListener {
                 listener.onClick(order)

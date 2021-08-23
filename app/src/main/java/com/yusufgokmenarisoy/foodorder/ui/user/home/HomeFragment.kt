@@ -1,6 +1,7 @@
 package com.yusufgokmenarisoy.foodorder.ui.user.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,6 +59,11 @@ class HomeFragment : BaseFragment() {
 
     private fun fetchData() {
         sharedViewModel.getAddresses()
+        if (sharedViewModel.isUpdateOrders()) {
+            Log.v("ASdf", "asdf ${sharedViewModel.isUpdateOrders()}")
+            viewModel.updateOrderHistory(sharedViewModel.getToken()!!)
+            sharedViewModel.ordersUpdated()
+        }
     }
 
     private fun initAdapters() {
@@ -139,13 +145,6 @@ class HomeFragment : BaseFragment() {
             if (it > 0) {
                 val text = "${getString(R.string.btn_basket)} ($it)"
                 binding.buttonCart.text = text
-            }
-        })
-
-        sharedViewModel.updateOrders.observe(viewLifecycleOwner, { isUpdate ->
-            if (isUpdate) {
-                viewModel.getOrderHistory(sharedViewModel.getToken()!!)
-                sharedViewModel.ordersUpdated()
             }
         })
     }

@@ -82,7 +82,9 @@ class FoodDetailFragment : BaseFragment() {
                 }
                 Snackbar.make(requireActivity().findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
                 findNavController().popBackStack()
-                sharedViewModel.getCartItemCount()
+                if (!viewModel.isInCart()) {
+                    sharedViewModel.increaseCartItemCount()
+                }
             } else {
                 showClearCartAndAddItemDialog()
             }

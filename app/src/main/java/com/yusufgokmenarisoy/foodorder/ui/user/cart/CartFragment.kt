@@ -50,7 +50,6 @@ class CartFragment : BaseFragment() {
     }
 
     private fun init() {
-        viewModel.getCart()
         if (viewModel.getRestaurantId() == -1) {
             binding.layoutEmptyCartWarning.show()
         }
@@ -82,6 +81,7 @@ class CartFragment : BaseFragment() {
                                 binding.recyclerViewCart.show()
                                 binding.layoutRestaurantDetail.show()
                                 initViews(response.restaurant!!)
+                                getCart()
                             }
                         }
                     }
@@ -89,6 +89,10 @@ class CartFragment : BaseFragment() {
                 }
             })
         }
+    }
+
+    private fun getCart() {
+        viewModel.getCart()
         viewModel.cart.observe(viewLifecycleOwner, {
             if (it.isNotEmpty()) {
                 cart = it
@@ -111,11 +115,13 @@ class CartFragment : BaseFragment() {
         binding.buttonConfirmCart.show()
         Glide.with(requireContext()).load(restaurant.image).into(binding.imageViewRestaurant)
         binding.textViewRestaurantName.text = restaurant.name
-        restaurant.rating?.let {
-            val rate = it.slice(0..2)
+        if (restaurant.rating != null) {
+            val rate = restaurant.rating.slice(0..2)
             binding.textViewRate.text = rate
+
+        } else {
+            binding.textViewRate.text = "-"
         }
-        binding.textViewRate.text = "-"
         val deliveryTime = "${restaurant.avgDeliveryTime} dk"
         binding.textViewRestaurantAvgDeliveryTimeText.text = deliveryTime
         binding.layoutRestaurantDetail.setOnClickListener {
@@ -138,7 +144,7 @@ class CartFragment : BaseFragment() {
         dialog.findViewById<MaterialButton>(R.id.buttonYes).setOnClickListener {
             viewModel.clearCart()
             findNavController().popBackStack()
-            sharedViewModel.getCartItemCount()
+            sharedViewModel.setItemCount(0)
             dialog.dismiss()
         }
         dialog.findViewById<MaterialButton>(R.id.buttonNo).setOnClickListener {
